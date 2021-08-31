@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+:root {
+	--radius-big: 12px;
+	--radius-small: 8px;
+	--radius-smaller: 4px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	left: 0;
+	top: 0;
+	font-size: 100%;
+}
+
+.shadow {
+	filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.05));
+}
+
+.w-100 {
+	width: 100%;
+}
+
+img {
+	/* // user-drag: none; */
+	-webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.z-2 {
+	z-index: 2;
+}
+
+.rounded {
+	border-radius: var(--radius-big);
+}
+
+/* COLORS */
+
+:root {
+	/* dodati support za dark theme !! */
+	--dark: 27, 29, 34;
+	--darker: 13, 14, 17;
+	--light: 230, 230, 230;
+	--white: 255, 255, 255;
+	--black: 0, 0, 0;
+
+	/* ACCENTS */
+	--accent: 24, 159, 236;
+	--blue: 24, 159, 236;
+	--orange: 236, 126, 24;
+	/* --accent: #00ADD2; */
+
+	/* Theme */
+	--theme-text: var(--white);
+	--theme-background: var(--dark);
+	--theme-accent: var(--accent);
+	--theme-shade: var(--darker);
+
+	--card-shadow-default: 0px 8px 24px rgba(var(--black), 0.15);
+	--card-shadow-hover: 0px 12px 32px rgba(var(--black), 0.1);
+	--card-shadow-active: 0px 4px 12px rgba(var(--black), 0.25);
+
+	--card-resize-hover: 1.05;
+	--card-resize-active: 0.95;
+
+	--button-shadow-default: 0px 2px 8px rgba(var(--black), 0.25);
+	--button-shadow-hover: 0px 6px 12px rgba(var(--black), 0.15);
+	--button-shadow-active: 0px 0px 4px rgba(var(--black), 0.3);
+
+	--button-transform-hover: -4px;
+	--button-transform-active: 2px;
+}
+
+.bg-theme {
+	background: rgb(var(--theme-background));
+}
+.text-theme {
+	color: rgb(var(--theme-text));
+}
+.bg-accent {
+	background: rgb(var(--theme-accent));
+}
+.text-accent {
+	color: rgb(var(--theme-accent));
+}
+
+body,
+.bg-dark {
+	background: rgb(var(--darker));
+	color: rgb(var(--white));
+}
+
+.bg-dark {
+	background: rgb(var(--dark));
+	color: rgb(var(--white));
+}
+.text-dark {
+	color: rgb(var(--dark));
+}
+
+.bg-shade {
+	background: rgba(0, 0, 0, 0.1);
+	color: rgb(var(--white));
+}
+
+.bg-white {
+	background: rgb(var(--white));
+}
+.text-white {
+	color: rgb(var(--white));
+}
+
+/* TYPO */
+
+* {
+	font-family: 'Open Sans', sans-serif;
+	color: rgb(var(--theme-text));
+}
+
+/* TYPOGRAPHY */
+h1,
+.display-1,
+h2,
+.display-2,
+h3,
+.display-3,
+h4,
+.display-4,
+h5,
+.display-5,
+h6,
+.display-6,
+p,
+a {
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+.display-1 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 64px;
+	line-height: 60px;
+}
+
+h2,
+.display-2 {
+	font-family: 'Josefin Sans';
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 60px;
+}
+
+h3,
+.display-3 {
+	font-family: 'Josefin Sans';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 36px;
+	line-height: 48px;
+}
+
+h4,
+.display-4 {
+	font-family: 'Josefin Sans';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 32px;
+}
+
+h5,
+.display-5 {
+	font-family: 'Josefin Sans';
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+h6,
+.display-6 {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 32px;
+}
+
+p,
+a {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.02em;
+}
+
+a {
+	text-decoration: none;
+}
+a.link {
+	position: relative;
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 16px;
+	text-decoration: underline;
+	z-index: 1;
+}
+a.link::before {
+	content: '';
+	position: absolute;
+	top: -8px;
+	bottom: -8px;
+	left: -12px;
+	right: -12px;
+	background-color: rgba(var(--black), 0);
+	border-radius: var(--radius-small);
+	z-index: -1;
+	transition-duration: 0.3s;
+}
+a.link:hover::before {
+	background-color: rgba(var(--black), 0.25);
+}
+
+p.small {
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.label {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: bold;
+	font-size: 10px;
+	line-height: 16px;
+	letter-spacing: 0.05em;
+}
+
+.card-content,
+.footer-text {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-justify {
+	text-align: justify;
+}
+
+.o-25 {
+	opacity: 0.25;
+}
