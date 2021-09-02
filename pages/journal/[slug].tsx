@@ -104,16 +104,15 @@ export default function Article({
 			<Navbar />
 			<Wrapper
 				color="var(--dark)"
-				url="https://media.istockphoto.com/photos/magic-abstract-blurred-blue-background-picture-id953240180?k=6&m=953240180&s=612x612&w=0&h=3U8IkNGD37jd3NdtWDTPHiIcGd-r9kV1F_EE4j6s0S0=">
+				url={`/articles/${blogPost.slug}/blur.png`}>
+				{/* url="https://media.istockphoto.com/photos/magic-abstract-blurred-blue-background-picture-id953240180?k=6&m=953240180&s=612x612&w=0&h=3U8IkNGD37jd3NdtWDTPHiIcGd-r9kV1F_EE4j6s0S0=" */}
 				<Container className="mt-3"></Container>
 
 				<ArticleHeader
 					color="var(--dark)"
 					title={blogPost.title}
 					categories={blogPost.tags.map((a) => a.name)}
-					img={
-						'https://s3.amazonaws.com/lumi-blog/_pano/prism-1-05_191009_223101.png?mtime=20191009153102&focal=none&tmtime=20200327071732'
-					}
+					img={`/articles/${blogPost.slug}/cover.png`}
 				/>
 
 				<MDXRemote {...blogPost.source} components={components} />

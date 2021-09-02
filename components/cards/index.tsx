@@ -78,7 +78,8 @@ type CardProps = {
 	fluid?: Boolean;
 	className?: String;
 	title: string;
-	categories?: string;
+	description: string;
+	categories?: string[];
 	image: string;
 };
 export class Card extends React.Component<CardProps> {
@@ -91,7 +92,7 @@ export class Card extends React.Component<CardProps> {
 				<div className="card-text">
 					<h4 className="text-white">{this.props.title}</h4>
 					<span className="display-6 text-accent">
-						{this.props.categories}
+						{this.props.categories?.toString()}
 					</span>
 				</div>
 			</CardMain>

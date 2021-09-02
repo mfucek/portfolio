@@ -16,6 +16,7 @@ import Article from './[slug]';
 import { GraphQLClient } from 'graphql-request';
 import { InferGetStaticPropsType } from 'next';
 import { Theme } from '../../components/theme/theme';
+import { Card } from '../../components/cards';
 
 export async function getStaticProps() {
 	const graphcms = new GraphQLClient(
@@ -63,6 +64,8 @@ export async function getStaticProps() {
 export default function Journal({
 	blogPosts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	let card_view: Boolean = false;
+
 	return (
 		<>
 			<Theme
@@ -80,25 +83,73 @@ export default function Journal({
 					</Section>
 
 					<Section>
-						{blogPosts.map((bp, index) => (
-							<>
-								<Link href={`/journal/${bp.slug}`}>
-									<a>
-										<ListCard
-											size={
-												index % 4 == 0 ? 'big' : 'small'
-											}
-											title={bp.title}
-											description={bp.content}
-											categories={bp.tags.map(
-												(tag) => tag.name
-											)}
-											image="https://s3.amazonaws.com/lumi-blog/_pano/prism-1-05_191009_223101.png?mtime=20191009153102&focal=none&tmtime=20200327071732"
-										/>
-									</a>
-								</Link>
-							</>
-						))}
+						<Container>
+							<Row>
+								{card_view ? (
+									<>
+										{blogPosts.map((bp, index) => (
+											<Col span={4}>
+												<>
+													<Link
+														href={`/journal/${bp.slug}`}>
+														<a>
+															<Card
+																size={
+																	index % 4 ==
+																	0
+																		? 'big'
+																		: 'small'
+																}
+																title={bp.title}
+																description={
+																	bp.content
+																}
+																categories={bp.tags.map(
+																	(tag) =>
+																		tag.name
+																)}
+																image="/articles/css-animators/cover.png"
+															/>
+														</a>
+													</Link>
+												</>
+											</Col>
+										))}
+									</>
+								) : (
+									<>
+										{blogPosts.map((bp, index) => (
+											<Col span={12}>
+												<>
+													<Link
+														href={`/journal/${bp.slug}`}>
+														<a>
+															<ListCard
+																size={
+																	index % 4 ==
+																	0
+																		? 'big'
+																		: 'small'
+																}
+																title={bp.title}
+																description={
+																	bp.content
+																}
+																categories={bp.tags.map(
+																	(tag) =>
+																		tag.name
+																)}
+																image={`/articles/${bp.slug}/cover.png`}
+															/>
+														</a>
+													</Link>
+												</>
+											</Col>
+										))}
+									</>
+								)}
+							</Row>
+						</Container>
 					</Section>
 				</Wrapper>
 				<Footer />
