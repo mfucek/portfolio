@@ -78,7 +78,7 @@ type CardProps = {
 	fluid?: Boolean;
 	className?: String;
 	title: string;
-	description: string;
+	description?: string;
 	categories?: string[];
 	image: string;
 };

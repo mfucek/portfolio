@@ -71,7 +71,20 @@ const FeaturedMainContainer = styled(Container)`
 	}
 `;
 
-export class FeaturedSection extends React.Component {
+type blogPost = {
+	id: string;
+	slug: string;
+	title: string;
+	content: string;
+	tags: { name: string }[];
+	dateRelevant: number;
+};
+
+type featuredSectionProps = {
+	blogPosts: blogPost[];
+};
+
+export class FeaturedSection extends React.Component<featuredSectionProps> {
 	render() {
 		return (
 			<>
@@ -103,21 +116,35 @@ export class FeaturedSection extends React.Component {
 					<Container fluid>
 						<Row>
 							<Col span={12} md={4} sm={6}>
-								<Link href="/journal/test2">
-									<Card
-										size="small"
-										title="CSS Animator Tool Concept"
-										categories="UI / UX Design"
-										image="articles/css-animator/cover.png"
-									/>
+								<Link
+									href={`/journal/${this.props.blogPosts[0].slug}`}>
+									<a>
+										<Card
+											size="small"
+											title={
+												this.props.blogPosts[0].title
+											}
+											categories={this.props.blogPosts[0].tags.map(
+												(tag) => tag.name
+											)}
+											image={`articles/${this.props.blogPosts[0].slug}/cover.png`}
+										/>
+									</a>
 								</Link>
-								<Link href="/journal/test2">
-									<Card
-										size="small"
-										title="Mundus Arcade App"
-										categories="UI / UX Design"
-										image="articles/mundus-arcade/cover.png"
-									/>
+								<Link
+									href={`/journal/${this.props.blogPosts[1].slug}`}>
+									<a>
+										<Card
+											size="small"
+											title={
+												this.props.blogPosts[1].title
+											}
+											categories={this.props.blogPosts[1].tags.map(
+												(tag) => tag.name
+											)}
+											image={`articles/${this.props.blogPosts[1].slug}/cover.png`}
+										/>
+									</a>
 								</Link>
 							</Col>
 							<Col
@@ -126,31 +153,52 @@ export class FeaturedSection extends React.Component {
 								sm={6}
 								hide={'md'}
 								className="mt-5">
-								<Link href="/journal/test2">
-									<Card
-										size="big"
-										title="Solderix Landing Page"
-										categories="UI / UX Design"
-										image="articles/solderix-landing/cover.png"
-									/>
+								<Link
+									href={`/journal/${this.props.blogPosts[2].slug}`}>
+									<a>
+										<Card
+											size="big"
+											title={
+												this.props.blogPosts[2].title
+											}
+											categories={this.props.blogPosts[2].tags.map(
+												(tag) => tag.name
+											)}
+											image={`articles/${this.props.blogPosts[2].slug}/cover.png`}
+										/>
+									</a>
 								</Link>
 							</Col>
 							<Col span={12} md={4} sm={6}>
-								<Link href="/journal/test2">
-									<Card
-										size="small"
-										title="Mundus Games"
-										categories="UI / UX Design"
-										image="articles/mundus-games/cover.png"
-									/>
+								<Link
+									href={`/journal/${this.props.blogPosts[3].slug}`}>
+									<a>
+										<Card
+											size="small"
+											title={
+												this.props.blogPosts[3].title
+											}
+											categories={this.props.blogPosts[3].tags.map(
+												(tag) => tag.name
+											)}
+											image={`articles/${this.props.blogPosts[3].slug}/cover.png`}
+										/>
+									</a>
 								</Link>
-								<Link href="/journal/test2">
-									<Card
-										size="small"
-										title="Audio-chat App"
-										categories="UI / UX Design"
-										image="articles/megafon-app/cover.png"
-									/>
+								<Link
+									href={`/journal/${this.props.blogPosts[4].slug}`}>
+									<a>
+										<Card
+											size="small"
+											title={
+												this.props.blogPosts[4].title
+											}
+											categories={this.props.blogPosts[4].tags.map(
+												(tag) => tag.name
+											)}
+											image={`articles/${this.props.blogPosts[4].slug}/cover.png`}
+										/>
+									</a>
 								</Link>
 							</Col>
 						</Row>

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 
 import {
 	ArticleEmphasis,
@@ -29,8 +29,51 @@ import { ListCard } from '../components/list_card';
 import { Footer } from '../components/footer';
 import { Navbar } from '../components/nav';
 import { Theme } from '../components/theme/theme';
+import { GraphQLClient } from 'graphql-request';
 
-const Home: NextPage = () => {
+export async function getStaticProps() {
+	const graphcms = new GraphQLClient(
+		'https://api-eu-central-1.graphcms.com/v2/ckshlh7hm1ej901xl2pv5f46c/master'
+	);
+
+	const { blogPosts } = await graphcms.request<{
+		blogPosts: {
+			id: string;
+			slug: string;
+			title: string;
+			content: string;
+			tags: { name: string }[];
+			dateRelevant: number;
+		}[];
+	}>(
+		`
+			query HomepageQuery {
+				blogPosts ( where: {featured: true} first: 5 ) {
+					slug
+					title
+					content
+					tags {
+						name
+					}
+					dateRelevant
+				}
+			}
+    `
+	);
+
+	return {
+		props: {
+			blogPosts: blogPosts.map((bp) => ({
+				...bp,
+				content: bp.content.slice(0, 128)
+			}))
+		}
+	};
+}
+
+export default function Home({
+	blogPosts
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<Theme>
@@ -38,7 +81,7 @@ const Home: NextPage = () => {
 				<Wrapper className="pt-5">
 					<HeroSection />
 
-					<FeaturedSection />
+					<FeaturedSection blogPosts={blogPosts} />
 
 					<CategoriesSection />
 
@@ -83,6 +126,4 @@ const Home: NextPage = () => {
 			</Theme>
 		</>
 	);
-};
-
-export default Home;
+}
