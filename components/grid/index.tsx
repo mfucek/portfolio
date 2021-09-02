@@ -13,6 +13,9 @@ export const WrapperHelper = styled.div<WrapperProps>`
 	max-width: 100vw;
 	overflow-x: hidden;
 
+	padding-left: var(--spacing-2);
+	padding-right: var(--spacing-2);
+
 	padding-top: var(--spacing-4);
 	background-color: rgb(var(--${(props) => props.color}));
 
@@ -100,6 +103,7 @@ type ColProps = {
 	lg?: Number;
 	xs?: Number;
 	className?: String;
+	hide?: string;
 };
 export class Col extends React.Component<ColProps> {
 	private df_out: string = this.props.span ? ' col-' + this.props.span : '';
@@ -107,6 +111,8 @@ export class Col extends React.Component<ColProps> {
 	private md_out: string = this.props.md ? ' col-md-' + this.props.md : '';
 	private lg_out: string = this.props.sm ? ' col-sm-' + this.props.sm : '';
 	private xs_out: string = this.props.xs ? ' col-xs-' + this.props.xs : '';
+
+	private hide: string = this.props.hide ? ' hide-' + this.props.hide : '';
 
 	render() {
 		return (
@@ -116,7 +122,8 @@ export class Col extends React.Component<ColProps> {
 					this.sm_out +
 					this.md_out +
 					this.lg_out +
-					this.xs_out
+					this.xs_out +
+					this.hide
 				} ${this.props.className ? this.props.className : ''}`}>
 				{this.props.children}
 			</div>

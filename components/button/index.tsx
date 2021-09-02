@@ -1,10 +1,16 @@
 import Link from 'next/link';
+import React from 'react';
 import styled from 'styled-components';
 
-const ButtonHelper = styled.a.attrs((props) => ({
-	className: props.className
-}))`
+type buttonProps = {
+	className?: string;
+	href?: string;
+};
+
+const ButtonHelper = styled.a<buttonProps>`
 	& {
+		cursor: pointer;
+
 		font-family: 'Open Sans';
 		font-style: normal;
 		font-weight: bold;
@@ -20,6 +26,10 @@ const ButtonHelper = styled.a.attrs((props) => ({
 		transition-duration: 0.3s;
 		filter: drop-shadow(var(--button-shadow-default));
 		font-weight: bold;
+	}
+	&.simple {
+		padding: 0;
+		filter: none !important;
 	}
 
 	&:hover {
@@ -67,7 +77,8 @@ const ButtonHelper = styled.a.attrs((props) => ({
 	&.btn-social {
 		padding: 10px 12px;
 		border-radius: 12px;
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: rgb(var(--theme-shade));
+		filter: none;
 	}
 	&.btn-social:hover {
 		background-color: rgba(0, 0, 0, 0.25);
@@ -82,8 +93,10 @@ const ButtonHelper = styled.a.attrs((props) => ({
 
 const Button = (props: any) => {
 	return (
-		<Link href={props.href}>
-			<ButtonHelper />
+		<Link href={props.href} passHref>
+			<ButtonHelper className={props.className}>
+				{props.children}
+			</ButtonHelper>
 		</Link>
 	);
 };

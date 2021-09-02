@@ -25,6 +25,11 @@ let defaultTheme: themeProps = {
 };
 
 export class Theme extends React.Component<themeProps> {
+	componentDidMount() {
+		document.body.style.backgroundColor = `rgb(var(--${
+			this.props.shade ? this.props.shade : defaultTheme.shade
+		}))`;
+	}
 	render() {
 		return (
 			<ThemeMain

@@ -20,6 +20,7 @@ import {
 	Wrapper
 } from '../components/grid';
 import {
+	CategoriesSection,
 	FeaturedSection,
 	HeroSection,
 	SkillsSection
@@ -38,6 +39,8 @@ const Home: NextPage = () => {
 					<HeroSection />
 
 					<FeaturedSection />
+
+					<CategoriesSection />
 
 					<Section id="about" className="mb-4">
 						<Title center text="About me" />
@@ -58,9 +61,11 @@ const Home: NextPage = () => {
 							justify="justify"
 							text="Driven by this I spent my time delving into many different fields and as a result I found myself using these tools most frequently."
 						/>
+					</Section>
 
-						<SkillsSection />
+					<SkillsSection />
 
+					<Section>
 						<Paragraph
 							justify="justify"
 							text="Driven by this I spent my time delving into many different fields and as a result I found myself using these tools most frequently."

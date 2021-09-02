@@ -18,7 +18,7 @@ export class Paragraph extends React.Component<ParagraphProps> {
 	render() {
 		return (
 			<Container>
-				<Row justify className="mb-4 px-2 px-sm-0">
+				<Row justify className="mb-4">
 					<Col
 						span={12}
 						sm={this.props.narrow ? 6 : 8}
@@ -47,7 +47,7 @@ export class Title extends React.Component<TitleProps> {
 	render() {
 		return (
 			<Container>
-				<Row justify className="mb-3 px-2 px-sm-0">
+				<Row justify className="mb-3">
 					<Col
 						span={12}
 						sm={8}
@@ -74,7 +74,7 @@ export class Heading extends React.Component<HeadingProps> {
 	render() {
 		return (
 			<Container>
-				<Row justify className="mb-1 px-2 px-sm-0">
+				<Row justify className="mb-1">
 					<Col
 						span={12}
 						sm={8}
@@ -99,7 +99,7 @@ export class Subheading extends React.Component<SubheadingProps> {
 	render() {
 		return (
 			<Container>
-				<Row justify className="mb-1 px-2 px-sm-0">
+				<Row justify className="mb-1">
 					<Col
 						span={12}
 						sm={8}

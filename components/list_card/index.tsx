@@ -10,7 +10,7 @@ const ArticleMain = styled.div`
 
 		filter: drop-shadow(var(--card-shadow-default));
 
-		background-color: red;
+		background-color: rgb(var(--theme-shade));
 		background-position: center;
 		background-size: cover;
 
@@ -55,7 +55,7 @@ export class ListCard extends React.Component<ArticleProps> {
 			<Container
 				className={`${this.props.size == 'big' ? 'mb-4' : 'mb-3'}`}>
 				<ArticleMain>
-					<Row justify className="px-2 px-md-0">
+					<Row justify>
 						{this.props.size == 'big' ? (
 							<Col span={12}>
 								<div
@@ -88,8 +88,10 @@ export class ListCard extends React.Component<ArticleProps> {
 										<span className="display-6 text-accent">
 											{this.props.categories?.toString()}
 										</span>
-										<h4>{this.props.title}</h4>
-										<p className="small">
+										<h4 className="mb-1">
+											{this.props.title}
+										</h4>
+										<p className="small o-60">
 											{this.props.description}
 										</p>
 									</div>

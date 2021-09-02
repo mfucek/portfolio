@@ -15,6 +15,7 @@ import Article from './[slug]';
 
 import { GraphQLClient } from 'graphql-request';
 import { InferGetStaticPropsType } from 'next';
+import { Theme } from '../../components/theme/theme';
 
 export async function getStaticProps() {
 	const graphcms = new GraphQLClient(
@@ -64,17 +65,21 @@ export default function Journal({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<Navbar />
-			<Wrapper color={'var(--dark)'} className="pt-5">
-				<Section>
-					<Container>
-						<Title center text="Journal" />
-						{/* <Subheading text={products} /> */}
-					</Container>
-				</Section>
+			<Theme
+				background={'darker'}
+				accent={'blue'}
+				text={'white'}
+				shade={'black'}>
+				<Navbar />
+				<Wrapper className="pt-5">
+					<Section>
+						<Container>
+							<Title center text="Journal" />
+							{/* <Subheading text={products} /> */}
+						</Container>
+					</Section>
 
-				<Section>
-					<Container>
+					<Section>
 						{blogPosts.map((bp, index) => (
 							<>
 								<Link href={`/journal/${bp.slug}`}>
@@ -94,11 +99,10 @@ export default function Journal({
 								</Link>
 							</>
 						))}
-					</Container>
-				</Section>
-
+					</Section>
+				</Wrapper>
 				<Footer />
-			</Wrapper>
+			</Theme>
 		</>
 	);
 }

@@ -283,3 +283,39 @@ p.small {
 .o-25 {
 	opacity: 0.25;
 }
+.o-50 {
+	opacity: 0.5;
+}
+.o-60 {
+	opacity: 0.6;
+}
+.o-80 {
+	opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+	.hide-md {
+		display: none;
+	}
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	padding: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #7c7c7c80;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #000000a0;
+}

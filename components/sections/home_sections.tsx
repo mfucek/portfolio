@@ -1,6 +1,14 @@
 import React from 'react';
 import Button from '../button';
-import { Col, Container, Row, Section } from '../grid';
+import {
+	Col,
+	Container,
+	Flex,
+	FlexConstant,
+	FlexFill,
+	Row,
+	Section
+} from '../grid';
 import { Color } from '../../components/typography';
 
 import { Backdrop, Paragraph } from '../article_items';
@@ -33,14 +41,14 @@ export class HeroSection extends React.Component {
 			<section>
 				<HeroContainer>
 					<Row justify className="mb-5">
-						<Col span={8} className="text-center mb-1">
+						<Col span={12} md={8} className="text-center mb-1">
 							<div className="hero-image" />
 							<h1 className="text-theme">
 								{' '}
 								<Color>Hi</Color>, I&apos;m Matija{' '}
 							</h1>
 						</Col>
-						<Col span={6} className="text-center">
+						<Col span={8} sm={8} md={6} className="text-center">
 							<p className="text-theme">
 								{' '}
 								The world can be big at times, so I made a
@@ -57,6 +65,9 @@ export class HeroSection extends React.Component {
 const FeaturedMainContainer = styled(Container)`
 	& {
 		margin-bottom: -100px;
+		@media (max-width: 768px) {
+			margin-bottom: 0;
+		}
 	}
 `;
 
@@ -67,7 +78,7 @@ export class FeaturedSection extends React.Component {
 				<Section className="mb-4">
 					<FeaturedMainContainer>
 						<Row justify>
-							<Col span={8} className="mb-3">
+							<Col span={12} md={8} className="mb-3">
 								<h3 className="text-center">
 									I design digital products, brands and
 									experiences.
@@ -77,12 +88,12 @@ export class FeaturedSection extends React.Component {
 						<Row justify className="mb-3">
 							<Col span={12} className="text-center">
 								<Button
-									className="btn-secondary mx-2"
+									className="btn-secondary mr-1"
 									href="#test">
 									About me
 								</Button>
 								<Button
-									className="btn-secondary mx-2"
+									className="btn-secondary"
 									href="/journal">
 									My Journey
 								</Button>
@@ -91,49 +102,54 @@ export class FeaturedSection extends React.Component {
 					</FeaturedMainContainer>
 					<Container fluid>
 						<Row>
-							<Col span={4}>
+							<Col span={12} md={4} sm={6}>
 								<Link href="/journal/test2">
 									<Card
 										size="small"
-										title="Mundus App Design"
+										title="CSS Animator Tool Concept"
 										categories="UI / UX Design"
-										image="https://s3.amazonaws.com/lumi-blog/_pano/prism-1-05_191009_223101.png?mtime=20191009153102&focal=none&tmtime=20200327071732"
+										image="articles/css-animator/cover.png"
 									/>
 								</Link>
 								<Link href="/journal/test2">
 									<Card
 										size="small"
-										title="Mundus App Design"
+										title="Mundus Arcade App"
 										categories="UI / UX Design"
-										image="https://s3.amazonaws.com/lumi-blog/_pano/prism-1-05_191009_223101.png?mtime=20191009153102&focal=none&tmtime=20200327071732"
+										image="articles/mundus-arcade/cover.png"
 									/>
 								</Link>
 							</Col>
-							<Col span={4} className="mt-5">
+							<Col
+								span={12}
+								md={4}
+								sm={6}
+								hide={'md'}
+								className="mt-5">
 								<Link href="/journal/test2">
 									<Card
 										size="big"
-										title="Mundus App Design"
+										title="Solderix Landing Page"
 										categories="UI / UX Design"
-										image="https://s3.amazonaws.com/lumi-blog/_pano/prism-1-05_191009_223101.png?mtime=20191009153102&focal=none&tmtime=20200327071732"
+										image="articles/solderix-landing/cover.png"
 									/>
 								</Link>
 							</Col>
-							<Col span={4}>
+							<Col span={12} md={4} sm={6}>
 								<Link href="/journal/test2">
 									<Card
 										size="small"
-										title="Mundus App Design"
+										title="Mundus Games"
 										categories="UI / UX Design"
-										image="https://s3.amazonaws.com/lumi-blog/_pano/prism-1-05_191009_223101.png?mtime=20191009153102&focal=none&tmtime=20200327071732"
+										image="articles/mundus-games/cover.png"
 									/>
 								</Link>
 								<Link href="/journal/test2">
 									<Card
 										size="small"
-										title="Mundus App Design"
+										title="Audio-chat App"
 										categories="UI / UX Design"
-										image="https://s3.amazonaws.com/lumi-blog/_pano/prism-1-05_191009_223101.png?mtime=20191009153102&focal=none&tmtime=20200327071732"
+										image="articles/megafon-app/cover.png"
 									/>
 								</Link>
 							</Col>
@@ -155,112 +171,292 @@ const SkillContainer = styled(Container)`
 export class SkillsSection extends React.Component {
 	render() {
 		return (
-			<SkillContainer className="mb-4">
-				<Row>
-					<Col span={12} md={6} className="mb-md-0 mb-3">
-						<Backdrop className="pt-3 pb-2 px-2 text-center">
-							<Row>
-								<Col span={12}>
-									<h4 className="mb-3"> Languages </h4>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/html.png"
-									/>
-									<p className="small"> HTML 5 </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/css.png"
-									/>
-									<p className="small"> CSS 3 </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/js.png"
-									/>
-									<p className="small"> Javascript </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/ts.png"
-									/>
-									<p className="small"> Typescript </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/react.png"
-									/>
-									<p className="small"> React </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/py.png"
-									/>
-									<p className="small"> Python </p>
-								</Col>
-							</Row>
-						</Backdrop>
-					</Col>
-					<Col span={12} md={6}>
-						<Backdrop className="pt-3 pb-2 px-2 text-center">
-							<Row>
-								<Col span={12}>
-									<h4 className="mb-3"> Software </h4>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/ai.png"
-									/>
-									<p className="small"> Illustrator </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/ae.png"
-									/>
-									<p className="small"> After Effects </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/pr.png"
-									/>
-									<p className="small"> Premiere Pro </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/f360.png"
-									/>
-									<p className="small"> Fusion 360 </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/blender.png"
-									/>
-									<p className="small"> Blender </p>
-								</Col>
-								<Col span={4} sm={2} md={4} className="mb-2">
-									<img
-										className="skill-icon"
-										src="/img/skill_icons/figma.png"
-									/>
-									<p className="small"> Figma </p>
-								</Col>
-							</Row>
-						</Backdrop>
-					</Col>
-				</Row>
-			</SkillContainer>
+			<Section className="mb-4">
+				<SkillContainer>
+					<Row>
+						<Col span={12} md={6} className="mb-md-0 mb-3">
+							<Backdrop className="pt-3 pb-2 px-2 text-center">
+								<Row>
+									<Col span={12}>
+										<h4 className="mb-3"> Languages </h4>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/html.png"
+										/>
+										<p className="small"> HTML 5 </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/css.png"
+										/>
+										<p className="small"> CSS 3 </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/js.png"
+										/>
+										<p className="small"> Javascript </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/ts.png"
+										/>
+										<p className="small"> Typescript </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/react.png"
+										/>
+										<p className="small"> React </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/py.png"
+										/>
+										<p className="small"> Python </p>
+									</Col>
+								</Row>
+							</Backdrop>
+						</Col>
+						<Col span={12} md={6}>
+							<Backdrop className="pt-3 pb-2 px-2 text-center">
+								<Row>
+									<Col span={12}>
+										<h4 className="mb-3"> Software </h4>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/ai.png"
+										/>
+										<p className="small"> Illustrator </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/ae.png"
+										/>
+										<p className="small"> After Effects </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/pr.png"
+										/>
+										<p className="small"> Premiere Pro </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/f360.png"
+										/>
+										<p className="small"> Fusion 360 </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/blender.png"
+										/>
+										<p className="small"> Blender </p>
+									</Col>
+									<Col
+										span={4}
+										sm={2}
+										md={4}
+										className="mb-2">
+										<img
+											className="skill-icon"
+											src="/img/skill_icons/figma.png"
+										/>
+										<p className="small"> Figma </p>
+									</Col>
+								</Row>
+							</Backdrop>
+						</Col>
+					</Row>
+				</SkillContainer>
+			</Section>
+		);
+	}
+}
+
+interface CategoriesSectionProps {
+	title?: string;
+	description?: string;
+	href?: any;
+	icon?: string;
+	color?: string;
+}
+const CategoryItemHelper = styled.div<CategoriesSectionProps>`
+	& {
+		.icon {
+			display: inline-block;
+			font-size: 32px;
+			text-align: center;
+			justify-content: center;
+			line-height: 56px;
+			width: 56px;
+			border-radius: 12px;
+			background-color: ${(props) => props.color};
+		}
+		.body {
+			display: inline;
+			.title {
+			}
+			.description {
+				opacity: 0.6;
+			}
+		}
+		margin-bottom: var(--spacing-3);
+	}
+`;
+
+class CategoryItem extends React.Component<CategoriesSectionProps> {
+	render() {
+		return (
+			<Button href={this.props.href} className="simple w-100">
+				<CategoryItemHelper color={this.props.color}>
+					<Flex>
+						<FlexConstant width="68px">
+							<div className="icon">{this.props.icon}</div>
+						</FlexConstant>
+						<FlexFill>
+							<div className="body">
+								<p className="title display-5">
+									{this.props.title}
+								</p>
+								<p className="description small">
+									{this.props.description}
+								</p>
+							</div>
+						</FlexFill>
+					</Flex>
+				</CategoryItemHelper>
+			</Button>
+		);
+	}
+}
+
+export class CategoriesSection extends React.Component {
+	render() {
+		return (
+			<>
+				<Section className="mb-3">
+					<Container>
+						<Row justify>
+							<Col span={10} md={8}>
+								<Row>
+									<Col span={12} sm={6}>
+										<CategoryItem
+											title="Movies"
+											description="Explore my filmography and production."
+											href="/journal?tags=filmography"
+											icon="🎬"
+											color="#3AD0FF40"
+										/>
+									</Col>
+									<Col span={12} sm={6}>
+										<CategoryItem
+											title="Interface"
+											description="Explore my filmography and production."
+											href="/journal?tags=interface"
+											icon="🖥"
+											color="#FF3A8140"
+										/>
+									</Col>
+									<Col span={12} sm={6}>
+										<CategoryItem
+											title="Motion Graphics"
+											description="From 3D CGI to 2D short animations."
+											href="/journal?tags=motion-graphics"
+											icon="🚀"
+											color="#FF6A3A40"
+										/>
+									</Col>
+									<Col span={12} sm={6}>
+										<CategoryItem
+											title="Packaging"
+											description="Explore my filmography and production."
+											href="/journal?tags=packaging"
+											icon="📦"
+											color="#FFB03A40"
+										/>
+									</Col>
+									<Col span={12} sm={6}>
+										<CategoryItem
+											title="Game Development"
+											description="Beware this section!"
+											href="/journal?tags=game-development"
+											icon="👾"
+											color="#CC3AFF40"
+										/>
+									</Col>
+									<Col span={12} sm={6}>
+										<CategoryItem
+											title="Branding"
+											description="Explore my filmography and production."
+											href="/journal?tags=branding"
+											icon="🎨"
+											color="#D8FF3A40"
+										/>
+									</Col>
+								</Row>
+							</Col>
+						</Row>
+					</Container>
+				</Section>
+			</>
 		);
 	}
 }

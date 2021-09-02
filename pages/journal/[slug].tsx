@@ -117,9 +117,8 @@ export default function Article({
 				/>
 
 				<MDXRemote {...blogPost.source} components={components} />
-
-				<Footer />
 			</Wrapper>
+			<Footer />
 		</>
 	);
 }
