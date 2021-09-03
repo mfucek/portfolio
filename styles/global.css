@@ -124,6 +124,10 @@ body,
 	color: rgb(var(--white));
 }
 
+*::selection {
+	background-color: rgb(var(--theme-accent));
+}
+
 /* TYPO */
 
 * {

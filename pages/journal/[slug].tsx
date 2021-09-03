@@ -16,6 +16,7 @@ import dynamic from 'next/dynamic';
 
 import { GraphQLClient } from 'graphql-request';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { Theme } from '../../components/theme/theme';
 
 type BlogPost = {
 	id: string;
@@ -101,23 +102,30 @@ export default function Article({
 
 	return (
 		<>
-			<Navbar />
-			<Wrapper
-				color="var(--dark)"
-				url={`/articles/${blogPost.slug}/blur.png`}>
-				{/* url="https://media.istockphoto.com/photos/magic-abstract-blurred-blue-background-picture-id953240180?k=6&m=953240180&s=612x612&w=0&h=3U8IkNGD37jd3NdtWDTPHiIcGd-r9kV1F_EE4j6s0S0=" */}
-				<Container className="mt-3"></Container>
+			<Theme
+				background={'darker'}
+				accent={'blue'}
+				text={'white'}
+				shade={'black'}>
+				<Navbar />
 
-				<ArticleHeader
+				<Wrapper
 					color="var(--dark)"
-					title={blogPost.title}
-					categories={blogPost.tags.map((a) => a.name)}
-					img={`/articles/${blogPost.slug}/cover.png`}
-				/>
+					url={`/articles/${blogPost.slug}/blur.png`}>
+					{/* url="https://media.istockphoto.com/photos/magic-abstract-blurred-blue-background-picture-id953240180?k=6&m=953240180&s=612x612&w=0&h=3U8IkNGD37jd3NdtWDTPHiIcGd-r9kV1F_EE4j6s0S0=" */}
+					<Container className="mt-3"></Container>
 
-				<MDXRemote {...blogPost.source} components={components} />
-			</Wrapper>
-			<Footer />
+					<ArticleHeader
+						color="var(--dark)"
+						title={blogPost.title}
+						categories={blogPost.tags.map((a) => a.name)}
+						img={`/articles/${blogPost.slug}/cover.png`}
+					/>
+
+					<MDXRemote {...blogPost.source} components={components} />
+					<Footer />
+				</Wrapper>
+			</Theme>
 		</>
 	);
 }

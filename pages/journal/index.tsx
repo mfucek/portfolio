@@ -151,8 +151,8 @@ export default function Journal({
 							</Row>
 						</Container>
 					</Section>
+					<Footer />
 				</Wrapper>
-				<Footer />
 			</Theme>
 		</>
 	);

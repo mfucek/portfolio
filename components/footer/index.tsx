@@ -9,9 +9,16 @@ const FooterSection = styled.section`
 	& {
 		position: relative;
 		padding-bottom: var(--spacing-5);
-		background: rgb(var(--theme-background));
+		/* background: rgb(var(--theme-background)); */
+		background: linear-gradient(
+			0deg,
+			rgba(var(--theme-shade), 1),
+			rgba(var(--theme-shade), 0)
+		);
+		margin-left: calc(-1 * var(--spacing-2));
+		margin-right: calc(-1 * var(--spacing-2));
 	}
-	& .gradient {
+	/* & .gradient {
 		position: absolute;
 		background: linear-gradient(
 			0deg,
@@ -22,7 +29,8 @@ const FooterSection = styled.section`
 		bottom: 0;
 		left: 0;
 		right: 0;
-	}
+		pointer-events: none;
+	} */
 `;
 
 export class Footer extends React.Component {
@@ -30,7 +38,7 @@ export class Footer extends React.Component {
 		return (
 			<FooterSection>
 				<Container className="pt-4">
-					<div className="gradient"></div>
+					{/* <div className="gradient"></div> */}
 					<Row justify className="mb-3">
 						<Col span={8} md={12} className="text-center">
 							<h2 className="text-theme">
