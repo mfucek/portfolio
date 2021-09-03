@@ -115,9 +115,9 @@ export default function Home({
 						/>
 
 						<ArticleEmphasis
-							text="Innovative brands i helped manage scalable and sustainable packaging."
-							link="https://www.infinum.com"
-							linkText="Infinum"
+							text="Innovative brands i helped manage scalable and sustainable packaging. (PH)"
+							linkText="Journal"
+							link="/journal"
 						/>
 					</Section>
 

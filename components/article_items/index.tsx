@@ -7,6 +7,7 @@ import logo_ig from '../../assets/img/social_icons/instagram.svg';
 import styled from 'styled-components';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 type ParagraphProps = {
 	className?: String;
@@ -165,7 +166,7 @@ const ArticleHeaderHelper = styled.div<ImageProps>`
 				margin: 0;
 				li {
 					display: inline-block;
-					background-color: rgba(var(--black), 0.5);
+					background-color: rgba(var(--theme-shade), 0.5);
 					padding: 6px 12px;
 					border-radius: var(--radius-small);
 
@@ -190,10 +191,15 @@ export class ArticleHeader extends React.Component<ArticleHeaderProps> {
 								<ul className="categories">
 									{this.props.categories.map((cat) => {
 										return (
-											<li key={cat} className="label">
-												{' '}
-												{cat}{' '}
-											</li>
+											<Link
+												href={`/journal?tags=
+														${cat.replace(/[\s/\n]+/g, '-').toLowerCase()}
+													`}
+												passHref>
+												<a className="label">
+													<li key={cat}>{cat}</li>
+												</a>
+											</Link>
 										);
 									})}
 								</ul>
