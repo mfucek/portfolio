@@ -71,34 +71,16 @@ export class Footer extends React.Component {
 						<Col className="text-center">
 							<Button
 								className="btn-social mx-2"
-								href="https://www.linkedin.com/in/matija-fu%C4%87ek-017331154">
-								<Image
-									src="/img/social_icons/instagram.svg"
-									height={16}
-									width={16}
-									alt=""
-								/>
-							</Button>
+								href="https://www.linkedin.com/in/matija-fu%C4%87ek-017331154"
+								svg="/img/social_icons/instagram.svg"></Button>
 							<Button
 								className="btn-social mx-2"
-								href="https://github.com/mfucek">
-								<Image
-									src="/img/social_icons/github.svg"
-									height={16}
-									width={16}
-									alt=""
-								/>
-							</Button>
+								href="https://github.com/mfucek"
+								svg="/img/social_icons/github.svg"></Button>
 							<Button
 								className="btn-social mx-2"
-								href="https://instagram.com/matijafucek">
-								<Image
-									src="/img/social_icons/linkedin.svg"
-									alt=""
-									height={16}
-									width={16}
-								/>
-							</Button>
+								href="https://instagram.com/matijafucek"
+								svg="/img/social_icons/linkedin.svg"></Button>
 						</Col>
 					</Row>
 				</Container>

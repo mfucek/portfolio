@@ -77,28 +77,53 @@ const ButtonHelper = styled.a<buttonProps>`
 	&.btn-social {
 		padding: 10px 12px;
 		border-radius: 12px;
-		background-color: rgb(var(--theme-shade));
+		background-color: rgba(var(--theme-background), 0);
 		filter: none;
 	}
 	&.btn-social:hover {
-		background-color: rgba(0, 0, 0, 0.25);
+		background-color: rgba(var(--theme-background), 1);
 	}
 	&.btn-social:active {
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(var(--theme-background), 0.5);
 	}
 	&.btn-social::after {
 		content: none;
 	}
 `;
 
-const Button = (props: any) => {
-	return (
-		<Link href={props.href} passHref>
-			<ButtonHelper className={props.className}>
-				{props.children}
-			</ButtonHelper>
-		</Link>
-	);
+type svgComponentProps = {
+	src: string;
 };
+const SvgComponent = styled.div<svgComponentProps>`
+	& {
+		height: 16px;
+		width: 16px;
+		background-color: rgba(var(--theme-text), 0.8);
+		mask: url('${(props) => props.src}');
+	}
+`;
+
+type buttonProps2 = {
+	href: string;
+	className?: string;
+	svg?: string;
+};
+
+export class Button extends React.Component<buttonProps2> {
+	render() {
+		return (
+			<Link href={this.props.href} passHref>
+				<ButtonHelper className={this.props.className}>
+					{this.props.svg ? (
+						<SvgComponent src={this.props.svg} />
+					) : (
+						''
+					)}
+					{this.props.children}
+				</ButtonHelper>
+			</Link>
+		);
+	}
+}
 
 export default Button;
