@@ -32,12 +32,12 @@ const NavbarMain = styled.div`
 	}
 
 	& .nav a:hover {
-		background-color: #00000040;
+		background-color: rgba(var(--theme-background), 1);
 		transition-duration: 0.1s;
 	}
 
 	& .nav a:active {
-		background-color: #00000080;
+		background-color: rgba(var(--theme-background), 0.5);
 	}
 
 	& .gradient-top {
