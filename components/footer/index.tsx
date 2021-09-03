@@ -71,7 +71,7 @@ export class Footer extends React.Component {
 						<Col className="text-center">
 							<Button
 								className="btn-social mx-2"
-								href="https://www.linkedin.com/in/matija-fu%C4%87ek-017331154"
+								href="https://instagram.com/matijafucek"
 								svg="/img/social_icons/instagram.svg"></Button>
 							<Button
 								className="btn-social mx-2"
@@ -79,7 +79,7 @@ export class Footer extends React.Component {
 								svg="/img/social_icons/github.svg"></Button>
 							<Button
 								className="btn-social mx-2"
-								href="https://instagram.com/matijafucek"
+								href="https://www.linkedin.com/in/matija-fu%C4%87ek-017331154"
 								svg="/img/social_icons/linkedin.svg"></Button>
 						</Col>
 					</Row>
