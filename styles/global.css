@@ -126,6 +126,7 @@ body,
 
 *::selection {
 	background-color: rgb(var(--theme-accent));
+	color: rgb(var(--theme-background));
 }
 
 /* TYPO */
