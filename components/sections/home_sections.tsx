@@ -103,7 +103,15 @@ export class FeaturedSection extends React.Component<featuredSectionProps> {
 							<Col span={12} className="text-center">
 								<Button
 									className="btn-secondary mr-1"
-									href="#test">
+									onClick={() => {
+										let obj =
+											document.querySelector('#about');
+										if (obj) {
+											obj.scrollIntoView({
+												behavior: 'smooth'
+											});
+										}
+									}}>
 									About me
 								</Button>
 								<Button

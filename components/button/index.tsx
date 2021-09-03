@@ -104,24 +104,42 @@ const SvgComponent = styled.div<svgComponentProps>`
 `;
 
 type buttonProps2 = {
-	href: string;
+	href?: string;
 	className?: string;
 	svg?: string;
+	onClick?: React.MouseEventHandler;
 };
 
 export class Button extends React.Component<buttonProps2> {
 	render() {
 		return (
-			<Link href={this.props.href} passHref>
-				<ButtonHelper className={this.props.className}>
-					{this.props.svg ? (
-						<SvgComponent src={this.props.svg} />
-					) : (
-						''
-					)}
-					{this.props.children}
-				</ButtonHelper>
-			</Link>
+			<>
+				{this.props.href ? (
+					<Link href={this.props.href} passHref>
+						<ButtonHelper
+							className={this.props.className}
+							onClick={true ? this.props.onClick : undefined}>
+							{this.props.svg ? (
+								<SvgComponent src={this.props.svg} />
+							) : (
+								''
+							)}
+							{this.props.children}
+						</ButtonHelper>
+					</Link>
+				) : (
+					<ButtonHelper
+						className={this.props.className}
+						onClick={true ? this.props.onClick : undefined}>
+						{this.props.svg ? (
+							<SvgComponent src={this.props.svg} />
+						) : (
+							''
+						)}
+						{this.props.children}
+					</ButtonHelper>
+				)}
+			</>
 		);
 	}
 }
