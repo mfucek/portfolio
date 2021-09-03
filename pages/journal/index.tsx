@@ -88,7 +88,7 @@ export default function Journal({
 								{card_view ? (
 									<>
 										{blogPosts.map((bp, index) => (
-											<Col span={4}>
+											<Col span={4} key={index}>
 												<>
 													<Link
 														href={`/journal/${bp.slug}`}>
@@ -119,7 +119,7 @@ export default function Journal({
 								) : (
 									<>
 										{blogPosts.map((bp, index) => (
-											<Col span={12}>
+											<Col span={12} key={index}>
 												<>
 													<Link
 														href={`/journal/${bp.slug}`}>

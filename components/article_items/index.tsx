@@ -191,6 +191,7 @@ export class ArticleHeader extends React.Component<ArticleHeaderProps> {
 									{this.props.categories.map((cat) => {
 										return (
 											<Link
+												key={cat}
 												href={`/journal?tags=
 														${cat.replace(/[\s/\n]+/g, '-').toLowerCase()}
 													`}
