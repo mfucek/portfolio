@@ -169,10 +169,9 @@ const ArticleHeaderHelper = styled.div<ImageProps>`
 					background-color: rgba(var(--theme-shade), 0.5);
 					padding: 6px 12px;
 					border-radius: var(--radius-small);
-
-					:not(:last-child) {
-						margin-right: var(--spacing-1);
-					}
+				}
+				*:not(:last-child) {
+					margin-right: var(--spacing-1);
 				}
 			}
 		}
