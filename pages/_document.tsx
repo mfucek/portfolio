@@ -1,5 +1,5 @@
 import App from 'next/app';
-import Document from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -27,5 +27,37 @@ export default class MyDocument extends Document {
 		} finally {
 			sheet.seal();
 		}
+	}
+	render() {
+		return (
+			<>
+				<Html>
+					<Head>
+						<link
+							rel="icon"
+							type="image/png"
+							href="/faviconx16.png"
+							sizes="16x16"
+						/>
+						<link
+							rel="icon"
+							type="image/png"
+							href="/faviconx32.png"
+							sizes="32x32"
+						/>
+						<link
+							rel="icon"
+							type="image/png"
+							href="/faviconx96.png"
+							sizes="96x96"
+						/>
+					</Head>
+					<body>
+						<Main />
+						<NextScript />
+					</body>
+				</Html>
+			</>
+		);
 	}
 }

@@ -1,10 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import Button from '../button';
 import Container from '../grid/Container';
 import Col from '../grid/Col';
 import Row from '../grid/Row';
-
-import styled from 'styled-components';
 
 const FooterSection = styled.section`
 	& {
@@ -34,7 +34,7 @@ const FooterSection = styled.section`
 	} */
 `;
 
-export class Footer extends React.Component {
+export default class Footer extends React.Component {
 	render() {
 		return (
 			<FooterSection>

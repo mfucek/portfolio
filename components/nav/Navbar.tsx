@@ -54,7 +54,7 @@ const NavbarMain = styled.div`
 		right: 0;
 	}
 `;
-export class Navbar extends React.Component {
+export default class Navbar extends React.Component {
 	render() {
 		return (
 			<NavbarMain>

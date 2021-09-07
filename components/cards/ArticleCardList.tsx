@@ -52,11 +52,13 @@ type ArticleProps = {
 	categories?: string[];
 	image: string;
 };
-export class ListCard extends React.Component<ArticleProps> {
+export default class ArticleCardList extends React.Component<ArticleProps> {
 	render() {
 		return (
 			<Container
-				className={`${this.props.size == 'big' ? 'mb-4' : 'mb-3'}`}>
+				className={`${
+					this.props.size == 'big' ? 'mb-4 mt-3' : 'mb-3'
+				}`}>
 				<ArticleMain>
 					<Row justify>
 						{this.props.size == 'big' ? (

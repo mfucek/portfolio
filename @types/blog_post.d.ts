@@ -5,5 +5,5 @@ export interface blogPost {
 	content: string;
 	tags: { name: string }[];
 	dateRelevant: number;
-	source: any;
+	// source: any;
 }

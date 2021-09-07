@@ -9,9 +9,8 @@ import FeaturedSection from '../components/sections/FeaturedSection';
 import HeroSection from '../components/sections/HeroSection';
 import SkillsSection from '../components/sections/CategoriesSection';
 
-import { ListCard } from '../components/list_card';
-import { Footer } from '../components/footer';
-import { Navbar } from '../components/nav';
+import Footer from '../components/footer/Footer';
+import Navbar from '../components/nav/Navbar';
 import { Theme } from '../components/theme/theme';
 import { GraphQLClient } from 'graphql-request';
 import Paragraph from '../components/article_items/Paragraph';
@@ -19,6 +18,7 @@ import Title from '../components/article_items/Title';
 import Heading from '../components/article_items/Heading';
 import ArticleEmphasis from '../components/article_items/Emphasis';
 import { blogPost } from '../@types/blog_post';
+import Seo from '../components/seo/Seo';
 
 export async function getStaticProps() {
 	const graphcms = new GraphQLClient(
@@ -59,6 +59,7 @@ export default function Home({
 	return (
 		<>
 			<Theme>
+				<Seo />
 				<Navbar />
 				<Wrapper className="pt-5">
 					<HeroSection />

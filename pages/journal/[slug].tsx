@@ -1,7 +1,7 @@
 import React from 'react';
-import { Footer } from '../../components/footer';
+import Footer from '../../components/footer/Footer';
 import Container from '../../components/grid/Container';
-import { Navbar } from '../../components/nav';
+import Navbar from '../../components/nav/Navbar';
 
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
@@ -16,6 +16,7 @@ import Subheading from '../../components/article_items/Subheading';
 import ArticleImageMultiple from '../../components/article_items/ArticleImageMultiple';
 import ArticleHeader from '../../components/article_items/ArticleHeader';
 import Wrapper from '../../components/grid/Wrapper';
+import { Color } from '../../components/typography';
 
 type BlogPost = {
 	id: string;
@@ -91,7 +92,8 @@ const components = {
 	p: Paragraph,
 	h1: Heading,
 	h2: Subheading,
-	ImageGallery: ArticleImageMultiple
+	ImageGallery: ArticleImageMultiple,
+	Test: Color
 };
 
 export default function Article({

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from '../button';
-import { Card } from '../cards';
+import ArticleCard from '../cards/ArticleCard';
 import Link from 'next/link';
 import { blogPost } from '../../@types/blog_post';
 import Section from '../grid/Section';
@@ -65,7 +65,7 @@ export default class FeaturedSection extends React.Component<featuredSectionProp
 								<Link
 									href={`/journal/${this.props.blogPosts[0].slug}`}>
 									<a>
-										<Card
+										<ArticleCard
 											size="small"
 											title={
 												this.props.blogPosts[0].title
@@ -80,7 +80,7 @@ export default class FeaturedSection extends React.Component<featuredSectionProp
 								<Link
 									href={`/journal/${this.props.blogPosts[1].slug}`}>
 									<a>
-										<Card
+										<ArticleCard
 											size="small"
 											title={
 												this.props.blogPosts[1].title
@@ -102,7 +102,7 @@ export default class FeaturedSection extends React.Component<featuredSectionProp
 								<Link
 									href={`/journal/${this.props.blogPosts[2].slug}`}>
 									<a>
-										<Card
+										<ArticleCard
 											size="big"
 											title={
 												this.props.blogPosts[2].title
@@ -119,7 +119,7 @@ export default class FeaturedSection extends React.Component<featuredSectionProp
 								<Link
 									href={`/journal/${this.props.blogPosts[3].slug}`}>
 									<a>
-										<Card
+										<ArticleCard
 											size="small"
 											title={
 												this.props.blogPosts[3].title
@@ -134,7 +134,7 @@ export default class FeaturedSection extends React.Component<featuredSectionProp
 								<Link
 									href={`/journal/${this.props.blogPosts[4].slug}`}>
 									<a>
-										<Card
+										<ArticleCard
 											size="small"
 											title={
 												this.props.blogPosts[4].title

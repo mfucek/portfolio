@@ -2,19 +2,19 @@ import React from 'react';
 import Link from 'next/link';
 
 import Backdrop from '../../components/article_items/Backdrop';
-import { Footer } from '../../components/footer';
+import Footer from '../../components/footer/Footer';
 import Section from '../../components/grid/Section';
 import Col from '../../components/grid/Col';
 import Container from '../../components/grid/Container';
 import Row from '../../components/grid/Row';
-import { ListCard } from '../../components/list_card';
-import { Navbar } from '../../components/nav';
+import ArticleCardList from '../../components/cards/ArticleCardList';
+import Navbar from '../../components/nav/Navbar';
 import Article from './[slug]';
 
 import { GraphQLClient } from 'graphql-request';
 import { InferGetStaticPropsType } from 'next';
 import { Theme } from '../../components/theme/theme';
-import { Card } from '../../components/cards';
+import ArticleCard from '../../components/cards/ArticleCard';
 import Title from '../../components/article_items/Title';
 import Wrapper from '../../components/grid/Wrapper';
 
@@ -93,7 +93,7 @@ export default function Journal({
 													<Link
 														href={`/journal/${bp.slug}`}>
 														<a>
-															<Card
+															<ArticleCard
 																size={
 																	index % 4 ==
 																	0
@@ -124,7 +124,7 @@ export default function Journal({
 													<Link
 														href={`/journal/${bp.slug}`}>
 														<a>
-															<ListCard
+															<ArticleCardList
 																size={
 																	index % 4 ==
 																	0

@@ -81,7 +81,7 @@ type CardProps = {
 	categories?: string[];
 	image: string;
 };
-export class Card extends React.Component<CardProps> {
+export default class ArticleCard extends React.Component<CardProps> {
 	render() {
 		return (
 			<CardMain
