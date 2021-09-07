@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from '../button';
-import Image from 'next/image';
-import { Col, Container, Row } from '../grid';
+import Container from '../grid/Container';
+import Col from '../grid/Col';
+import Row from '../grid/Row';
 
 import styled from 'styled-components';
 

@@ -1,7 +1,10 @@
-import { url } from 'inspector';
 import React from 'react';
 import styled from 'styled-components';
-import { Col, Container, Flex, FlexConstant, FlexFill, Row } from '../grid';
+
+import Container from '../grid/Container';
+import Col from '../grid/Col';
+import Row from '../grid/Row';
+import Flex, { FlexConstant, FlexFill } from '../grid/Flex';
 
 const ArticleMain = styled.div`
 	& .card-image {

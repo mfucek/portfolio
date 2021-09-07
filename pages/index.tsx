@@ -1,35 +1,24 @@
+import React from 'react';
 import type { InferGetStaticPropsType, NextPage } from 'next';
 
-import {
-	ArticleEmphasis,
-	Backdrop,
-	Heading,
-	Paragraph,
-	Subheading,
-	Title
-} from '../components/article_items';
-import { Card } from '../components/cards';
-import {
-	Col,
-	Container,
-	Flex,
-	FlexConstant,
-	FlexFill,
-	Row,
-	Section,
-	Wrapper
-} from '../components/grid';
-import {
-	CategoriesSection,
-	FeaturedSection,
-	HeroSection,
-	SkillsSection
-} from '../components/sections/home_sections';
+import Section from '../components/grid/Section';
+import Wrapper from '../components/grid/Wrapper';
+
+import CategoriesSection from '../components/sections/CategoriesSection';
+import FeaturedSection from '../components/sections/FeaturedSection';
+import HeroSection from '../components/sections/HeroSection';
+import SkillsSection from '../components/sections/CategoriesSection';
+
 import { ListCard } from '../components/list_card';
 import { Footer } from '../components/footer';
 import { Navbar } from '../components/nav';
 import { Theme } from '../components/theme/theme';
 import { GraphQLClient } from 'graphql-request';
+import Paragraph from '../components/article_items/Paragraph';
+import Title from '../components/article_items/Title';
+import Heading from '../components/article_items/Heading';
+import ArticleEmphasis from '../components/article_items/Emphasis';
+import { blogPost } from '../@types/blog_post';
 
 export async function getStaticProps() {
 	const graphcms = new GraphQLClient(
@@ -37,14 +26,7 @@ export async function getStaticProps() {
 	);
 
 	const { blogPosts } = await graphcms.request<{
-		blogPosts: {
-			id: string;
-			slug: string;
-			title: string;
-			content: string;
-			tags: { name: string }[];
-			dateRelevant: number;
-		}[];
+		blogPosts: blogPost[];
 	}>(
 		`
 			query HomepageQuery {

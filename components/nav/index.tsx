@@ -1,7 +1,9 @@
-import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
-import { Col, Container } from '../grid';
+import Link from 'next/link';
+
+import Container from '../grid/Container';
+import Col from '../grid/Col';
 
 const NavbarMain = styled.div`
 	position: relative;

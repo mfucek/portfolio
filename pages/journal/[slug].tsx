@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-	ArticleHeader,
-	ArticleImages,
-	Heading,
-	Paragraph,
-	Subheading
-} from '../../components/article_items';
 import { Footer } from '../../components/footer';
-import { Col, Container, Row, Wrapper } from '../../components/grid';
+import Container from '../../components/grid/Container';
 import { Navbar } from '../../components/nav';
 
 import { serialize } from 'next-mdx-remote/serialize';
@@ -17,6 +10,12 @@ import dynamic from 'next/dynamic';
 import { GraphQLClient } from 'graphql-request';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Theme } from '../../components/theme/theme';
+import Paragraph from '../../components/article_items/Paragraph';
+import Heading from '../../components/article_items/Heading';
+import Subheading from '../../components/article_items/Subheading';
+import ArticleImageMultiple from '../../components/article_items/ArticleImageMultiple';
+import ArticleHeader from '../../components/article_items/ArticleHeader';
+import Wrapper from '../../components/grid/Wrapper';
 
 type BlogPost = {
 	id: string;
@@ -92,7 +91,7 @@ const components = {
 	p: Paragraph,
 	h1: Heading,
 	h2: Subheading,
-	ImageGallery: ArticleImages
+	ImageGallery: ArticleImageMultiple
 };
 
 export default function Article({

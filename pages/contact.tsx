@@ -1,9 +1,13 @@
 import React from 'react';
-import { Heading, Title } from '../components/article_items';
+
+import Title from '../components/article_items/Title';
 import { Footer } from '../components/footer';
-import { Container, Section, Wrapper } from '../components/grid';
 import { Navbar } from '../components/nav';
 import { Theme } from '../components/theme/theme';
+
+import Section from '../components/grid/Section';
+import Container from '../components/grid/Container';
+import Wrapper from '../components/grid/Wrapper';
 
 export default function Contact() {
 	return (
