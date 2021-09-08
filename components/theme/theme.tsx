@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
-import { Col, Container } from '../grid';
 
 interface themeProps {
 	text?: string;
