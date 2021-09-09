@@ -7,7 +7,7 @@ import Wrapper from '../components/grid/Wrapper';
 import CategoriesSection from '../components/sections/CategoriesSection';
 import FeaturedSection from '../components/sections/FeaturedSection';
 import HeroSection from '../components/sections/HeroSection';
-import SkillsSection from '../components/sections/CategoriesSection';
+import SkillsSection from '../components/sections/SkillSection';
 
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/nav/Navbar';
