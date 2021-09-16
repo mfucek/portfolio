@@ -115,7 +115,7 @@ export default class Footer extends React.Component {
 								passHref>
 								<a>
 									<h4> Got a project? </h4>
-									<h2> Let's talk! </h2>
+									<h2> Let&apos;s talk! </h2>
 								</a>
 							</Link>
 						</div>
