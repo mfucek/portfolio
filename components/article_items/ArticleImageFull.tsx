@@ -55,8 +55,8 @@ export class ArticleImageFull extends React.Component<ImageProps> {
 						<div className="unset-img">
 							<Image
 								alt="Mountains"
-								// src={this.props.img}
-								src="/articles/solderix-landing-page/desktop_page.png"
+								src={this.props.img}
+								// src="/articles/solderix-landing-page/desktop_page.png"
 								layout="fill"
 								className="custom-img"
 							/>

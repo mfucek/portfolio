@@ -34,7 +34,7 @@ const ArticleTopicHelper = styled.div`
 `;
 
 type ArticleTopicProps = {
-	img: string;
+	img?: string;
 	title: string;
 	text: string;
 };
@@ -47,14 +47,20 @@ export default class ArticleTopic extends React.Component<ArticleTopicProps> {
 					<h4 className="mb-1">{this.props.title}</h4>
 					<p>{this.props.text}</p>
 				</div>
-				<div className="unset-img">
-					<Image
-						alt="Mountains"
-						src={this.props.img}
-						layout="fill"
-						className="custom-img"
-					/>
-				</div>
+				{this.props.img ? (
+					<>
+						<div className="unset-img">
+							<Image
+								alt="Mountains"
+								src={this.props.img}
+								layout="fill"
+								className="custom-img"
+							/>
+						</div>
+					</>
+				) : (
+					<></>
+				)}
 			</ArticleTopicHelper>
 		);
 	}

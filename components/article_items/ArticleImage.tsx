@@ -13,6 +13,11 @@ type ImageContainerProps = {
 const ImageContainer = styled.div<ImageContainerProps>`
 	display: block;
 	height: ${(props) => props.height}px;
+	@media (max-width: 768px) {
+		& {
+			height: 240px;
+		}
+	}
 	position: relative;
 	border-radius: var(--radius-big);
 	margin-bottom: var(--spacing-3);
@@ -73,7 +78,7 @@ class ArticleImageMultiple extends React.Component<ArticleImagesProps> {
 									height={
 										this.props.height
 											? this.props.height
-											: 240
+											: 480
 									}>
 									<Image
 										src={img}

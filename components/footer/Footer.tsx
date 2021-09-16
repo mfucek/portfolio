@@ -97,7 +97,7 @@ const FooterSection = styled.section`
 export default class Footer extends React.Component {
 	render() {
 		return (
-			<FooterSection className="mt-4">
+			<FooterSection className="mt-4 pt-4">
 				<Container className="pt-4">
 					<div className="circle-2" />
 					<div className="circle-1" />
