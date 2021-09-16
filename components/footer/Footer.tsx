@@ -57,8 +57,7 @@ const FooterSection = styled.section`
 				transition-duration: 0.3s;
 				cursor: pointer;
 				&:hover {
-					transform: translateY(var(--button-transform-hover))
-						scale(1.1);
+					transform: scale(1.1);
 				}
 
 				&:active {
@@ -110,12 +109,16 @@ export default class Footer extends React.Component {
 								objectFit="contain"></Image>
 						</div>
 
-						<Link href={'mailto:matijafucek1@gmail.com'}>
-							<div className="statement">
-								<h4> Got a project? </h4>
-								<h2> Let's talk! </h2>
-							</div>
-						</Link>
+						<div className="statement">
+							<Link
+								href={'mailto:matijafucek1@gmail.com'}
+								passHref>
+								<a>
+									<h4> Got a project? </h4>
+									<h2> Let's talk! </h2>
+								</a>
+							</Link>
+						</div>
 					</div>
 
 					<Row className="mb-3 bottom">
