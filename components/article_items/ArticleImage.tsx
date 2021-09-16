@@ -1,86 +1,80 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Container from '../grid/Container';
 import Col from '../grid/Col';
 import Row from '../grid/Row';
 import Image from 'next/image';
 
-type ImageProps = {
-	img: string;
+type ImageContainerProps = {
+	height: number;
 };
 
-const SingleImage = styled.div<ImageProps>`
+const ImageContainer = styled.div<ImageContainerProps>`
 	display: block;
-	height: 240px;
-	border-radius: var(--radius-big);
-	background-image: url('${(props) => props.img}');
-	background-size: cover;
-	background-position: center;
-	margin-bottom: var(--spacing-3);
-
-	img {
-		display: none;
-	}
-`;
-const ImageContainer = styled.div`
-	display: block;
-	height: 240px;
+	height: ${(props) => props.height}px;
 	position: relative;
 	border-radius: var(--radius-big);
 	margin-bottom: var(--spacing-3);
 	overflow: hidden;
+	filter: drop-shadow(var(--card-shadow-default));
 `;
 
 type ArticleImagesProps = {
-	img: string[];
+	img: string | string[];
+	height?: number;
 };
 
 const calculateCols = (length: number, size: string): number[] => {
 	let out: number[] = [];
 
-	let layouts: number[] = size == 'md' ? [4, 8, 8, 4] : [6];
+	// when length > 2
+	let layouts: number[] = size == 'md' ? [4, 8, 8, 4] : [6, 6, 6, 6];
 
 	if (length == 1) {
 		return [12];
 	} else if (length == 2) {
 		return [6, 6];
+	} else {
+		for (let i = 0; i < length; i++) {
+			out.push(layouts[i % 4]);
+		}
+		if (length % 2 == 1) {
+			out[length - 1] = 12;
+		}
+		return out;
 	}
-
-	for (let i = 0; i < length; i++) {
-		out.push(layouts[i % 4]);
-	}
-	if (length % 2 == 1) {
-		out[length - 1] = 12;
-	}
-	return out;
 };
 
 class ArticleImageMultiple extends React.Component<ArticleImagesProps> {
+	images: string[] = Array.isArray(this.props.img)
+		? this.props.img
+		: [this.props.img];
+
 	render() {
 		return (
 			<Container className="mb-3">
-				<Row justify className="px-2 px-md-0">
-					{this.props.img.map((img, index) => {
+				<Row justify>
+					{this.images.map((img, index) => {
 						return (
 							<Col
 								key={index}
 								span={
-									calculateCols(
-										this.props.img.length,
-										'span'
-									)[index]
+									calculateCols(this.images.length, 'span')[
+										index
+									]
 								}
 								md={
-									calculateCols(this.props.img.length, 'md')[
+									calculateCols(this.images.length, 'md')[
 										index
 									]
 								}>
-								{/* <SingleImage img={img}>
-									{' '}
-									<img src={img} alt="TODO" />{' '}
-								</SingleImage> */}
-								<ImageContainer>
+								<ImageContainer
+									height={
+										this.props.height
+											? this.props.height
+											: 240
+									}>
 									<Image
 										src={img}
 										alt="TODO"

@@ -13,10 +13,19 @@ import { Theme } from '../../components/theme/theme';
 import Paragraph from '../../components/article_items/Paragraph';
 import Heading from '../../components/article_items/Heading';
 import Subheading from '../../components/article_items/Subheading';
-import ArticleImageMultiple from '../../components/article_items/ArticleImageMultiple';
 import ArticleHeader from '../../components/article_items/ArticleHeader';
 import Wrapper from '../../components/grid/Wrapper';
 import { Color } from '../../components/typography';
+import ArticleImage from '../../components/article_items/ArticleImage';
+import ArticleImageFull from '../../components/article_items/ArticleImageFull';
+import {
+	ArticleSplitItem,
+	ArticleSplitter
+} from '../../components/article_items/ArticleSplitter';
+import ArticleTopic from '../../components/article_items/ArticleTopic';
+import Section from '../../components/grid/Section';
+import Row from '../../components/grid/Row';
+import Col from '../../components/grid/Col';
 
 type BlogPost = {
 	id: string;
@@ -24,7 +33,7 @@ type BlogPost = {
 	title: string;
 	content: string;
 	tags: { name: string }[];
-	dateRelevant: number;
+	dateRelevant: string;
 	source: any;
 };
 
@@ -92,8 +101,12 @@ const components = {
 	p: Paragraph,
 	h1: Heading,
 	h2: Subheading,
-	ImageGallery: ArticleImageMultiple,
-	Test: Color
+	Image: ArticleImage,
+	ImageFull: ArticleImageFull,
+	Test: Color,
+	ul: ArticleSplitter,
+	li: ArticleSplitItem,
+	topic: ArticleTopic
 };
 
 export default function Article({
@@ -120,10 +133,11 @@ export default function Article({
 						color="var(--dark)"
 						title={blogPost.title}
 						categories={blogPost.tags.map((a) => a.name)}
-						img={`/articles/${blogPost.slug}/cover.png`}
+						date={blogPost.dateRelevant}
 					/>
 
 					<MDXRemote {...blogPost.source} components={components} />
+
 					<Footer />
 				</Wrapper>
 			</Theme>

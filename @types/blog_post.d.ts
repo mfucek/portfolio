@@ -4,6 +4,7 @@ export interface blogPost {
 	title: string;
 	content: string;
 	tags: { name: string }[];
-	dateRelevant: number;
+	dateRelevant: string;
 	// source: any;
+	// unlisted: Boolean
 }

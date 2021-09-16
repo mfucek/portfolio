@@ -10,11 +10,12 @@ type ArticleHeaderProps = {
 	color: string;
 	title: string;
 	categories: string[];
-	img: string;
+	img?: string;
+	date: string;
 };
 
 type ImageProps = {
-	img: string;
+	img?: string;
 };
 
 const ArticleHeaderHelper = styled.div<ImageProps>`
@@ -58,8 +59,9 @@ const ArticleHeaderHelper = styled.div<ImageProps>`
 				margin: 0;
 				li {
 					display: inline-block;
-					background-color: rgba(var(--theme-shade), 0.5);
-					padding: 6px 12px;
+					background-color: rgba(var(--theme-accent), 0.1);
+					color: rgba(var(--theme-accent), 1);
+					padding: 4px 12px;
 					border-radius: var(--radius-small);
 				}
 				*:not(:last-child) {
@@ -70,15 +72,32 @@ const ArticleHeaderHelper = styled.div<ImageProps>`
 	}
 `;
 export class ArticleHeader extends React.Component<ArticleHeaderProps> {
+	date: string =
+		new Date(this.props.date).toLocaleString('default', {
+			month: 'long'
+		}) +
+		' ' +
+		new Date(this.props.date).toLocaleString('default', {
+			day: 'numeric'
+		}) +
+		', ' +
+		new Date(this.props.date).toLocaleString('default', {
+			year: 'numeric'
+		});
+
 	render() {
 		return (
 			<ArticleHeaderHelper img={this.props.img} className="mb-4">
 				<Container>
 					<Row justify>
 						<Col span={12} className="text-center px-2">
-							{this.props.img ? <div className="image" /> : <></>}
+							{/* {this.props.img ? <div className="image" /> : <></>} */}
+							<p className="small mb-1 o-50">{this.date}</p>
 							<div className="content">
-								<h2> {this.props.title} </h2>
+								<h1 className="display-2 mb-1">
+									{' '}
+									{this.props.title}{' '}
+								</h1>
 								<ul className="categories">
 									{this.props.categories.map((cat) => {
 										return (
