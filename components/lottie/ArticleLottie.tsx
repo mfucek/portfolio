@@ -12,10 +12,10 @@ import dynamic from 'next/dynamic';
 import * as lottie_beer from '../../public/lottie/beer.json';
 import * as lottie_answer_status from '../../public/lottie/answer_status.json';
 
-import * as lottie_cheng from '../../public/lottie/cheng.json';
-import * as lottie_bibor from '../../public/lottie/bibor.json';
-import * as lottie_verda from '../../public/lottie/verda.json';
-import * as lottie_nila from '../../public/lottie/nila.json';
+import * as lottie_cheng from '../../public/lottie/cheng2.json';
+import * as lottie_bibor from '../../public/lottie/bibor2.json';
+import * as lottie_verda from '../../public/lottie/verda2.json';
+import * as lottie_nila from '../../public/lottie/nila2.json';
 
 import * as lottie_ending from '../../public/lottie/ending.json';
 import * as lottie_intro from '../../public/lottie/intro.json';
