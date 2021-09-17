@@ -26,6 +26,7 @@ import ArticleTopic from '../../components/article_items/ArticleTopic';
 import Section from '../../components/grid/Section';
 import Row from '../../components/grid/Row';
 import Col from '../../components/grid/Col';
+import ArticleLottie from '../../components/lottie/ArticleLottie';
 
 type BlogPost = {
 	id: string;
@@ -98,6 +99,7 @@ export async function getStaticPaths() {
 
 const components = {
 	// p: dynamic(() => import('../../components/test')),
+	// h2: (props) => <h2 style={{ color: 'red' }} {...props} />,
 	p: Paragraph,
 	h1: Heading,
 	h2: Subheading,
@@ -106,7 +108,8 @@ const components = {
 	Test: Color,
 	ul: ArticleSplitter,
 	li: ArticleSplitItem,
-	topic: ArticleTopic
+	topic: ArticleTopic,
+	lottie: ArticleLottie
 };
 
 export default function Article({
