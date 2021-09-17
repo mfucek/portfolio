@@ -74,7 +74,8 @@ export default class CategoriesSection extends React.Component {
 						<Row>
 							<div className="text-center mb-3">
 								<p className="o-25">
-									Warning: Project filtering doesn't work yet.
+									Warning: Project filtering doesn&apos;t work
+									yet.
 								</p>
 							</div>
 						</Row>
