@@ -17,8 +17,26 @@ import { Theme } from '../../components/theme/theme';
 import ArticleCard from '../../components/cards/ArticleCard';
 import Title from '../../components/article_items/Title';
 import Wrapper from '../../components/grid/Wrapper';
+import { useRouter } from 'next/router';
+import Subheading from '../../components/article_items/Subheading';
+
+const Post = () => {
+	const router = useRouter();
+	const { tags } = router.query;
+
+	if (tags === undefined) {
+		return '';
+	} else {
+		return `${tags}`;
+	}
+};
 
 export async function getStaticProps() {
+	// const router = useRouter();
+	// const { tags } = router.query;
+
+	const filter: string = ''; //tags ? tags[0] : '';
+
 	const graphcms = new GraphQLClient(
 		'https://api-eu-central-1.graphcms.com/v2/ckshlh7hm1ej901xl2pv5f46c/master'
 	);
@@ -34,18 +52,20 @@ export async function getStaticProps() {
 		}[];
 	}>(
 		`
-      {
-        blogPosts {
-					id
-          slug
-          title
-					content
-					tags {
-						name
-					}
-					dateRelevant
-        }
-      }
+		query JournalQuery {
+			blogPosts ( where: {unlisted: false${
+				filter !== '' ? ', tags_some: {slug: ' + filter + ' }' : ''
+			} } ) {
+				id
+				slug
+				title
+				content
+				tags {
+					name
+				}
+				dateRelevant
+			}
+		}
     `
 	);
 
@@ -81,6 +101,8 @@ export default function Journal({
 							{/* <Subheading text={products} /> */}
 						</Container>
 					</Section>
+
+					<Subheading text={Post()} />
 
 					<Section>
 						<Container>

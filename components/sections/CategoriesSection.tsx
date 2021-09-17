@@ -71,6 +71,13 @@ export default class CategoriesSection extends React.Component {
 			<>
 				<Section className="mb-3">
 					<Container>
+						<Row>
+							<div className="text-center mb-3">
+								<p className="o-25">
+									Warning: Project filtering doesn't work yet.
+								</p>
+							</div>
+						</Row>
 						<Row justify>
 							<Col span={10} md={8}>
 								<Row>
