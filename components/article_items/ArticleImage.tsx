@@ -5,6 +5,7 @@ import Container from '../grid/Container';
 import Col from '../grid/Col';
 import Row from '../grid/Row';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type ImageContainerProps = {
 	height: number;
@@ -78,14 +79,19 @@ class ArticleImageMultiple extends React.Component<ArticleImagesProps> {
 									height={
 										this.props.height
 											? this.props.height
-											: 480
+											: 240
 									}>
+									{/* <Link href={img} passHref>
+										<a href=""> */}
 									<Image
 										src={img}
+										placeholder="blur"
 										alt="TODO"
 										layout="fill"
 										objectFit="cover"
 									/>
+									{/* </a>
+									</Link> */}
 								</ImageContainer>
 							</Col>
 						);

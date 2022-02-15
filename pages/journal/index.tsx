@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 import Backdrop from '../../components/article_items/Backdrop';
@@ -9,7 +9,7 @@ import Container from '../../components/grid/Container';
 import Row from '../../components/grid/Row';
 import ArticleCardList from '../../components/cards/ArticleCardList';
 import Navbar from '../../components/nav/Navbar';
-import Article from './[slug]';
+// import Article from './[slug]';
 
 import { GraphQLClient } from 'graphql-request';
 import { InferGetStaticPropsType } from 'next';
@@ -19,6 +19,8 @@ import Title from '../../components/article_items/Title';
 import Wrapper from '../../components/grid/Wrapper';
 import { useRouter } from 'next/router';
 import Subheading from '../../components/article_items/Subheading';
+import { ArticlePage } from '../../components/notion/notion';
+import { getAllArticles } from '../../services/notion/controller';
 
 const Post = () => {
 	const router = useRouter();
@@ -31,60 +33,24 @@ const Post = () => {
 	}
 };
 
-export async function getStaticProps() {
-	// const router = useRouter();
-	// const { tags } = router.query;
-
-	const filter: string = ''; //tags ? tags[0] : '';
-
-	const graphcms = new GraphQLClient(
-		'https://api-eu-central-1.graphcms.com/v2/ckshlh7hm1ej901xl2pv5f46c/master'
-	);
-
-	const { blogPosts } = await graphcms.request<{
-		blogPosts: {
-			id: string;
-			slug: string;
-			title: string;
-			content: string;
-			tags: { name: string }[];
-			dateRelevant: number;
-		}[];
-	}>(
-		`
-		query JournalQuery {
-			blogPosts ( where: {unlisted: false${
-				filter !== '' ? ', tags_some: {slug: ' + filter + ' }' : ''
-			} } ) {
-				id
-				slug
-				title
-				content
-				tags {
-					name
-				}
-				dateRelevant
-			}
-		}
-    `
-	);
-
-	return {
-		props: {
-			blogPosts: blogPosts
-				.map((bp) => ({
-					...bp,
-					content: bp.content.slice(0, 128)
-				}))
-				.sort((a, b) => b.dateRelevant - a.dateRelevant) // ne radi
-		}
-	};
-}
-
 export default function Journal({
-	blogPosts
+	results
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	useEffect(() => {
+		console.log(results);
+	});
 	let card_view: Boolean = false;
+
+	let articles = results.filter(
+		(b) => b.properties.Status.select.name == 'Done'
+	);
+	if (Post()) {
+		articles = articles.filter((b) =>
+			b.properties.Tags.multi_select
+				.map((c) => c.name)
+				.includes(JSON.parse(Post()))
+		);
+	}
 
 	return (
 		<>
@@ -102,18 +68,25 @@ export default function Journal({
 						</Container>
 					</Section>
 
-					<Subheading text={Post()} />
+					{Post() ? (
+						<>
+							<Subheading text={Post()} />
+							<p> {JSON.parse(Post())} </p>
+						</>
+					) : (
+						<></>
+					)}
 
 					<Section>
 						<Container>
 							<Row>
 								{card_view ? (
 									<>
-										{blogPosts.map((bp, index) => (
+										{articles.map((bp, index) => (
 											<Col span={4} key={index}>
 												<>
 													<Link
-														href={`/journal/${bp.slug}`}>
+														href={`/post/${bp.id}`}>
 														<a>
 															<ArticleCard
 																size={
@@ -122,15 +95,32 @@ export default function Journal({
 																		? 'big'
 																		: 'small'
 																}
-																title={bp.title}
-																description={
-																	bp.content
+																title={
+																	bp
+																		.properties[
+																		'Name'
+																	].title[0]
+																		.plain_text
 																}
-																categories={bp.tags.map(
+																description={
+																	bp
+																		.properties[
+																		'Description'
+																	]
+																		.rich_text[0]
+																		?.plain_text
+																}
+																categories={bp.properties[
+																	'Tags'
+																].multi_select.map(
 																	(tag) =>
 																		tag.name
 																)}
-																image="/articles/css-animators/cover.png"
+																image={
+																	bp.cover
+																		?.file
+																		.url
+																}
 															/>
 														</a>
 													</Link>
@@ -140,11 +130,11 @@ export default function Journal({
 									</>
 								) : (
 									<>
-										{blogPosts.map((bp, index) => (
+										{articles.map((bp, index) => (
 											<Col span={12} key={index}>
 												<>
 													<Link
-														href={`/journal/${bp.slug}`}>
+														href={`/post/${bp.id}`}>
 														<a>
 															<ArticleCardList
 																size={
@@ -153,15 +143,32 @@ export default function Journal({
 																		? 'big'
 																		: 'small'
 																}
-																title={bp.title}
-																description={
-																	bp.content
+																title={
+																	bp
+																		.properties[
+																		'Name'
+																	].title[0]
+																		.plain_text
 																}
-																categories={bp.tags.map(
+																description={
+																	bp
+																		.properties[
+																		'Description'
+																	]
+																		.rich_text[0]
+																		?.plain_text
+																}
+																categories={bp.properties[
+																	'Tags'
+																].multi_select.map(
 																	(tag) =>
 																		tag.name
 																)}
-																image={`/articles/${bp.slug}/cover.png`}
+																image={
+																	bp.cover
+																		?.file
+																		.url
+																}
 															/>
 														</a>
 													</Link>
@@ -178,4 +185,14 @@ export default function Journal({
 			</Theme>
 		</>
 	);
+}
+
+export async function getStaticProps() {
+	const results: ArticlePage[] = await getAllArticles();
+
+	return {
+		props: {
+			results
+		}
+	};
 }
