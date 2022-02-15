@@ -60,7 +60,7 @@ export class ArticleImageFull extends React.Component<ImageProps> {
 						<div className="unset-img">
 							<Image
 								alt=""
-								placeholder="blur"
+								// placeholder="blur"
 								src={this.props.img}
 								layout="fill"
 								className="custom-img"

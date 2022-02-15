@@ -70,8 +70,7 @@ export default function Journal({
 
 					{Post() ? (
 						<>
-							<Subheading text={Post()} />
-							<p> {JSON.parse(Post())} </p>
+							<Subheading center text={JSON.parse(Post())} />
 						</>
 					) : (
 						<></>

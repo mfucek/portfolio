@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<Head>
 				<script async src="https://cdn.splitbee.io/sb.js"></script>
 			</Head>
-			<Component {...pageProps} />;
+			<Component {...pageProps} />
 		</>
 	);
 }

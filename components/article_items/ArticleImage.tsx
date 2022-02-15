@@ -85,7 +85,7 @@ class ArticleImageMultiple extends React.Component<ArticleImagesProps> {
 										<a href=""> */}
 									<Image
 										src={img}
-										placeholder="blur"
+										// placeholder="blur"
 										alt="TODO"
 										layout="fill"
 										objectFit="cover"
