@@ -179,7 +179,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 			dataBlocks: dataBlocks,
 			parentBlocks: parentBlocks,
 			pageData: pageData
-		}
+		},
+		revalidate: 60
 	};
 }
 
