@@ -33,7 +33,7 @@ const ImageContainer = styled.div`
 		.unset-img {
 			width: 100%;
 		}
-		.unset-img > div {
+		.unset-img > * {
 			position: unset !important;
 		}
 	}
@@ -51,12 +51,17 @@ export class ArticleImageFull extends React.Component<ImageProps> {
 				<Container fluid={this.props.fluid ? true : false}>
 					<ImageContainer>
 						{/* <img src={this.props.img} width="100%" /> */}
-						{/* <Image src={this.props.img} alt="TODO" width="100%" /> */}
+						{/* <Image
+							src={this.props.img}
+							alt="TODO"
+							width="100%"
+							layout="fill"
+						/> */}
 						<div className="unset-img">
 							<Image
-								alt="Mountains"
+								alt=""
+								placeholder="blur"
 								src={this.props.img}
-								// src="/articles/solderix-landing-page/desktop_page.png"
 								layout="fill"
 								className="custom-img"
 							/>

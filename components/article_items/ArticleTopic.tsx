@@ -16,14 +16,16 @@ const ArticleTopicHelper = styled.div`
 		.custom-img {
 			object-fit: contain;
 			width: 100% !important;
+			height: 100px !important;
 			position: relative !important;
 			height: unset !important;
 		}
 
 		.unset-img {
+			position: relative;
 			width: 100%;
 		}
-		.unset-img > div {
+		.unset-img > * {
 			position: unset !important;
 		}
 

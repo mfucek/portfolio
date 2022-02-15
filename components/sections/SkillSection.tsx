@@ -33,6 +33,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/html.png"
 											height={48}
@@ -46,6 +47,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/css.png"
 											height={48}
@@ -59,6 +61,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/js.png"
 											height={48}
@@ -72,6 +75,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/ts.png"
 											height={48}
@@ -85,6 +89,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/react.png"
 											height={48}
@@ -98,6 +103,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/py.png"
 											height={48}
@@ -120,6 +126,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/ai.png"
 											height={48}
@@ -133,6 +140,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/ae.png"
 											height={48}
@@ -146,6 +154,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/pr.png"
 											height={48}
@@ -159,6 +168,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/f360.png"
 											height={48}
@@ -172,6 +182,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/blender.png"
 											height={48}
@@ -185,6 +196,7 @@ export default class SkillsSection extends React.Component {
 										md={4}
 										className="mb-2">
 										<Image
+											alt=""
 											className="skill-icon"
 											src="/img/skill_icons/figma.png"
 											height={48}

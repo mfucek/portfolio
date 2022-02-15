@@ -104,6 +104,7 @@ export default class Footer extends React.Component {
 					<div className="content">
 						<div className="image">
 							<Image
+								alt=""
 								src={'/img/footer/footer.png'}
 								layout="fill"
 								objectFit="contain"></Image>

@@ -72,12 +72,12 @@ export default class CategoriesSection extends React.Component {
 				<Section className="mb-3">
 					<Container>
 						<Row>
-							<div className="text-center mb-3">
+							{/* <div className="text-center mb-3">
 								<p className="o-25">
 									Warning: Project filtering doesn&apos;t work
 									yet.
 								</p>
-							</div>
+							</div> */}
 						</Row>
 						<Row justify>
 							<Col span={10} md={8}>
@@ -86,7 +86,7 @@ export default class CategoriesSection extends React.Component {
 										<CategoryItem
 											title="Movies"
 											description="Explore my filmography and production."
-											href="/journal?tags=filmography"
+											href='/journal?tags="Filmography"'
 											icon="🎬"
 											color="#3AD0FF40"
 										/>
@@ -95,7 +95,7 @@ export default class CategoriesSection extends React.Component {
 										<CategoryItem
 											title="Interface"
 											description="Explore my filmography and production."
-											href="/journal?tags=interface"
+											href='/journal?tags="Design"'
 											icon="🖥"
 											color="#FF3A8140"
 										/>
@@ -104,7 +104,7 @@ export default class CategoriesSection extends React.Component {
 										<CategoryItem
 											title="Motion Graphics"
 											description="From 3D CGI to 2D short animations."
-											href="/journal?tags=motion-graphics"
+											href='/journal?tags="Motion Graphics"'
 											icon="🚀"
 											color="#FF6A3A40"
 										/>
@@ -113,7 +113,7 @@ export default class CategoriesSection extends React.Component {
 										<CategoryItem
 											title="Packaging"
 											description="Explore my filmography and production."
-											href="/journal?tags=packaging"
+											href='/journal?tags="Packaging"'
 											icon="📦"
 											color="#FFB03A40"
 										/>
@@ -122,7 +122,7 @@ export default class CategoriesSection extends React.Component {
 										<CategoryItem
 											title="Game Development"
 											description="Beware this section!"
-											href="/journal?tags=game-development"
+											href='/journal?tags="Game Development"'
 											icon="👾"
 											color="#CC3AFF40"
 										/>
@@ -131,7 +131,7 @@ export default class CategoriesSection extends React.Component {
 										<CategoryItem
 											title="Branding"
 											description="Explore my filmography and production."
-											href="/journal?tags=branding"
+											href='/journal?tags="Branding"'
 											icon="🎨"
 											color="#D8FF3A40"
 										/>
