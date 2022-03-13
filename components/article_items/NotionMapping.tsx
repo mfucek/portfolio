@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import ArticleImageFull from '../article_items/ArticleImageFull';
@@ -55,7 +56,33 @@ export const NotionParagraph = (block: ParagraphBlock) => {
 	return (
 		<>
 			{block.paragraph.text.length != 0 ? (
-				<Paragraph text={block.paragraph.text[0]?.plain_text} />
+				// <Paragraph text={block.paragraph.text[0]?.plain_text} />
+				<Paragraph text={''}>
+					{/* {block.paragraph.text[0]?.plain_text} */}
+					{block.paragraph.text.map((e) => {
+						if (e.annotations.bold) {
+							return <b> {e.plain_text} </b>;
+						}
+						if (e.annotations.italic) {
+							return <i> {e.plain_text} </i>;
+						}
+						if (e.annotations.code) {
+							return <code> {e.plain_text} </code>;
+						}
+						if (e.href) {
+							return (
+								<Link href={e.href} passHref>
+									<a href="">
+										<span className="text-accent">
+											{e.plain_text}
+										</span>
+									</a>
+								</Link>
+							);
+						}
+						return e.plain_text;
+					})}
+				</Paragraph>
 			) : (
 				<></>
 			)}
