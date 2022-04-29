@@ -63,6 +63,20 @@ export default function PostSection(props: postSectionProps) {
 
 			<Section>
 				<Container>
+					{articles.length == 0 ? (
+						<>
+							<p className="text-center small mb-1 o-25">
+								No projects in '{postFilter}' are currently
+								featured.
+							</p>
+							<p className="text-center mb-3">
+								Please check back soon!
+							</p>
+						</>
+					) : (
+						<></>
+					)}
+
 					<Row>
 						{props.card_view ? (
 							<>
