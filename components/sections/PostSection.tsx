@@ -66,8 +66,8 @@ export default function PostSection(props: postSectionProps) {
 					{articles.length == 0 ? (
 						<>
 							<p className="text-center small mb-1 o-25">
-								No projects in '{postFilter}' are currently
-								featured.
+								No projects in &apos;{postFilter}&apos; are
+								currently featured.
 							</p>
 							<p className="text-center mb-3">
 								Please check back soon!
