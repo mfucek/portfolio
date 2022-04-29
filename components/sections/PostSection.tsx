@@ -44,7 +44,7 @@ type postSectionProps = {
 
 export default function PostSection(props: postSectionProps) {
 	let [postFilter, setPostFilter] = useState(
-		Post().split(',')[0].replaceAll('"', '')
+		Post().split(',')[0].replace(/"/g, '')
 	);
 
 	let articles = props.articles.filter((b) => {
