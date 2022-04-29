@@ -18,58 +18,51 @@ import Heading from '../components/article_items/Heading';
 import ArticleEmphasis from '../components/article_items/Emphasis';
 import Seo from '../components/seo/Seo';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ArticlePage } from '../components/notion/notion';
 import { getAllArticles } from '../services/notion/controller';
-import PostSection from '../components/sections/PostSection';
-import { useRouter } from 'next/router';
 
-export default function Home({
-	results
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-	useEffect(() => {
-		console.log(results);
-	});
-
-	let articles = results.filter(
-		(b) => b.properties.Status.select.name == 'Done'
-	);
-	// if (Post()) {
-	// 	articles = articles.filter((b) =>
-	// 		b.properties.Tags.multi_select
-	// 			.map((c) => c.name)
-	// 			.includes(JSON.parse(Post()))
-	// 	);
-	// }
-
+export default function About() {
 	return (
 		<>
 			<Theme>
 				<Seo />
 				<Navbar />
 				<Wrapper className="pt-5">
-					<HeroSection />
+					<Section id="about" className="mb-4">
+						<Title center text="About me" />
 
-					<PostSection articles={articles} card_view={true} />
+						<Paragraph
+							justify="justify"
+							text="In as few words possible, i'm a designer. But not one you imagine when you hear the word. I like to look deeper and envision how things work under the hood, not only how they look."
+						/>
+
+						<Heading center text="The tools" />
+
+						<Paragraph
+							justify="justify"
+							text="One of the most powerful desires I have is being capable of putting into reality anything I set my mind into."
+						/>
+
+						<Paragraph
+							justify="justify"
+							text="Driven by this I spent my time delving into many different fields and as a result I found myself using these tools most frequently."
+						/>
+					</Section>
+
+					<SkillsSection />
+
+					{/* <Section>
+						<ArticleEmphasis
+							text="Innovative brands i helped manage scalable and sustainable packaging. (PH)"
+							linkText="Journal"
+							link="/journal"
+						/>
+					</Section> */}
 
 					<Footer />
 				</Wrapper>
 			</Theme>
 		</>
 	);
-}
-
-export async function getStaticProps() {
-	const results: ArticlePage[] = await getAllArticles('Done');
-
-	console.log(
-		results.map((e) => e.id + ' - ' + e.properties.Status.select.name)
-	);
-
-	return {
-		props: {
-			results
-		},
-		revalidate: 60
-	};
 }

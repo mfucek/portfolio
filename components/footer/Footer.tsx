@@ -12,11 +12,11 @@ import Link from 'next/link';
 const FooterSection = styled.section`
 	& {
 		position: relative;
-		padding-bottom: var(--spacing-5);
+		padding-bottom: calc(var(--spacing-3) + var(--spacing-2));
 		background: linear-gradient(
 			0deg,
-			rgba(var(--theme-shade), 1),
-			rgba(var(--theme-shade), 0)
+			rgba(var(--theme-background), 1),
+			rgba(var(--theme-background), 0)
 		);
 		margin-left: calc(-1 * var(--spacing-2));
 		margin-right: calc(-1 * var(--spacing-2));
@@ -97,9 +97,11 @@ const FooterSection = styled.section`
 export default class Footer extends React.Component {
 	render() {
 		return (
-			<FooterSection className="mt-4 pt-4">
+			<FooterSection
+			// className={"mt-4 pt-4"}
+			>
 				<Container className="pt-4">
-					<div className="circle-2" />
+					{/* <div className="circle-2" />
 					<div className="circle-1" />
 					<div className="content">
 						<div className="image">
@@ -120,10 +122,11 @@ export default class Footer extends React.Component {
 								</a>
 							</Link>
 						</div>
-					</div>
+					</div> */}
 
-					<Row className="mb-3 bottom">
-						<Col span={12} className="mb-2">
+					{/* <Row className="mb-3 bottom"> */}
+					<Row className="bottom">
+						{/* <Col span={12} className="mb-2">
 							<Button
 								className="btn-social mx-2"
 								href="https://instagram.com/matijafucek"
@@ -136,10 +139,11 @@ export default class Footer extends React.Component {
 								className="btn-social mx-2"
 								href="https://www.linkedin.com/in/matija-fu%C4%87ek-017331154"
 								svg="/img/social_icons/linkedin.svg"></Button>
-						</Col>
+						</Col> */}
 						<Col span={12}>
-							<p className="small o-25 text-theme mx-2">
-								Copyright 2021 All rights reserved. Matija Fucek
+							<p className="small o-25 text-theme mx-2 text-center">
+								Copyright {new Date(Date.now()).getFullYear()}{' '}
+								All rights reserved. Matija Fućek
 							</p>
 						</Col>
 					</Row>

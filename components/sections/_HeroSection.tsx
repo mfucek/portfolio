@@ -1,16 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Color } from '../../components/typography';
+import { Color } from '../typography';
 import Col from '../grid/Col';
 import Container from '../grid/Container';
 import Row from '../grid/Row';
-
-const HeroName = styled.h1`
-	font-size: 120px;
-	line-height: 120px;
-	margin-bottom: -40px;
-`;
 
 const HeroContainer = styled(Container)`
 	& .hero-image {
@@ -36,21 +30,20 @@ export default class HeroSection extends React.Component {
 		return (
 			<section>
 				<HeroContainer>
-					<Row className="mb-5 mt-4">
-						<Col span={12} md={12}>
-							<HeroName className="text-shade display-0">
-								Fućek
-							</HeroName>
-							{/* <Row> */}
-							<Col span={12} md={6}>
-								<h2 className="text-theme mb-1"> /foochek/ </h2>
-								<h6 className="o-50">DEFINITION</h6>
-								<p className="o-50">
-									A person who designs and develops digital
-									products and experiences.
-								</p>
-							</Col>
-							{/* </Row> */}
+					<Row justify className="mb-5">
+						<Col span={12} md={8} className="text-center mb-1">
+							<div className="hero-image" />
+							<h1 className="text-theme">
+								{' '}
+								<Color>Hi</Color>, I&apos;m Matija{' '}
+							</h1>
+						</Col>
+						<Col span={8} sm={8} md={6} className="text-center">
+							<p className="text-theme">
+								{' '}
+								The world can be big at times, so I made a
+								little corner of my own.{' '}
+							</p>
 						</Col>
 					</Row>
 				</HeroContainer>

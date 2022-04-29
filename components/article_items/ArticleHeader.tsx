@@ -103,7 +103,7 @@ export class ArticleHeader extends React.Component<ArticleHeaderProps> {
 										return (
 											<Link
 												key={cat}
-												href={`/journal?tags="${cat}"
+												href={`/?tags="${cat}"
 													`}
 												// href={`/journal?tags=
 												// 		${cat.replace(/[\s/\n]+/g, '-').toLowerCase()}

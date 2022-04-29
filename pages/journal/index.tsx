@@ -21,6 +21,7 @@ import { useRouter } from 'next/router';
 import Subheading from '../../components/article_items/Subheading';
 import { ArticlePage } from '../../components/notion/notion';
 import { getAllArticles } from '../../services/notion/controller';
+import PostSection from '../../components/sections/PostSection';
 
 const Post = () => {
 	const router = useRouter();
@@ -64,121 +65,11 @@ export default function Journal({
 					<Section>
 						<Container>
 							<Title center text="Journal" />
-							{/* <Subheading text={products} /> */}
 						</Container>
 					</Section>
 
-					{Post() ? (
-						<>
-							<Subheading center text={JSON.parse(Post())} />
-						</>
-					) : (
-						<></>
-					)}
+					<PostSection articles={articles} card_view={true} />
 
-					<Section>
-						<Container>
-							<Row>
-								{card_view ? (
-									<>
-										{articles.map((bp, index) => (
-											<Col span={4} key={index}>
-												<>
-													<Link
-														href={`/post/${bp.id}`}>
-														<a>
-															<ArticleCard
-																size={
-																	index % 4 ==
-																	0
-																		? 'big'
-																		: 'small'
-																}
-																title={
-																	bp
-																		.properties[
-																		'Name'
-																	].title[0]
-																		.plain_text
-																}
-																description={
-																	bp
-																		.properties[
-																		'Description'
-																	]
-																		.rich_text[0]
-																		?.plain_text
-																}
-																categories={bp.properties[
-																	'Tags'
-																].multi_select.map(
-																	(tag) =>
-																		tag.name
-																)}
-																image={
-																	bp.cover
-																		?.file
-																		.url
-																}
-															/>
-														</a>
-													</Link>
-												</>
-											</Col>
-										))}
-									</>
-								) : (
-									<>
-										{articles.map((bp, index) => (
-											<Col span={12} key={index}>
-												<>
-													<Link
-														href={`/post/${bp.id}`}>
-														<a>
-															<ArticleCardList
-																size={
-																	index % 4 ==
-																	0
-																		? 'big'
-																		: 'small'
-																}
-																title={
-																	bp
-																		.properties[
-																		'Name'
-																	].title[0]
-																		.plain_text
-																}
-																description={
-																	bp
-																		.properties[
-																		'Description'
-																	]
-																		.rich_text[0]
-																		?.plain_text
-																}
-																categories={bp.properties[
-																	'Tags'
-																].multi_select.map(
-																	(tag) =>
-																		tag.name
-																)}
-																image={
-																	bp.cover
-																		?.file
-																		.url
-																}
-															/>
-														</a>
-													</Link>
-												</>
-											</Col>
-										))}
-									</>
-								)}
-							</Row>
-						</Container>
-					</Section>
 					<Footer />
 				</Wrapper>
 			</Theme>

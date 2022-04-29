@@ -81,13 +81,17 @@ const ButtonHelper = styled.a<buttonProps>`
 		filter: none;
 	}
 	&.btn-social:hover {
-		background-color: rgba(var(--theme-background), 1);
+		background-color: rgba(var(--theme-shade), 0.5);
 	}
 	&.btn-social:active {
-		background-color: rgba(var(--theme-background), 0.5);
+		background-color: rgba(var(--theme-shade), 0.5);
 	}
 	&.btn-social::after {
 		content: none;
+	}
+
+	&:hover .svg {
+		background-color: rgba(var(--theme-text), 1);
 	}
 `;
 
@@ -100,6 +104,7 @@ const SvgComponent = styled.div<svgComponentProps>`
 		width: 16px;
 		background-color: rgba(var(--theme-text), 0.8);
 		mask: url('${(props) => props.src}');
+		transition-duration: 0.3s;
 	}
 `;
 
@@ -107,7 +112,7 @@ type buttonProps2 = {
 	href?: string;
 	className?: string;
 	svg?: string;
-	onClick?: React.MouseEventHandler;
+	onClick?: () => void;
 };
 
 export class Button extends React.Component<buttonProps2> {
@@ -118,9 +123,16 @@ export class Button extends React.Component<buttonProps2> {
 					<Link href={this.props.href} passHref>
 						<ButtonHelper
 							className={this.props.className}
-							onClick={true ? this.props.onClick : undefined}>
+							onClick={
+								this.props.onClick
+									? this.props.onClick
+									: undefined
+							}>
 							{this.props.svg ? (
-								<SvgComponent src={this.props.svg} />
+								<SvgComponent
+									src={this.props.svg}
+									className="svg"
+								/>
 							) : (
 								''
 							)}
@@ -130,9 +142,14 @@ export class Button extends React.Component<buttonProps2> {
 				) : (
 					<ButtonHelper
 						className={this.props.className}
-						onClick={true ? this.props.onClick : undefined}>
+						onClick={
+							this.props.onClick ? this.props.onClick : undefined
+						}>
 						{this.props.svg ? (
-							<SvgComponent src={this.props.svg} />
+							<SvgComponent
+								src={this.props.svg}
+								className="svg"
+							/>
 						) : (
 							''
 						)}

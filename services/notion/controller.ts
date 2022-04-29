@@ -65,10 +65,16 @@ async function getDatabaseChildren<T = Page>(
 
 }
 
+let lastCall = 0;
+let getAllArticlesResponse:ArticlePage[];
+
 async function getAllArticles(filterByStatus?: string) {
-	const response = await getDatabaseChildren<ArticlePage>( databaseID, null, filterByStatus );
+	if (Date.now() - lastCall > 1000*60) {
+		lastCall = Date.now();
+		getAllArticlesResponse = await getDatabaseChildren<ArticlePage>( databaseID, null, filterByStatus );
+	}
 	
-	return response;
+	return getAllArticlesResponse;
 }
 
 async function getPageData(id:ID) {

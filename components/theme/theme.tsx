@@ -16,16 +16,24 @@ const ThemeMain = styled.div<themeProps>`
 `;
 
 let defaultTheme: themeProps = {
-	text: 'dark',
-	background: 'white',
-	shade: 'light',
-	accent: 'blue'
+	background: 'dark',
+	accent: 'blue',
+	text: 'white',
+	shade: 'darkish'
 };
+// let defaultTheme: themeProps = {
+// 	text: 'dark',
+// 	background: 'white',
+// 	shade: 'light',
+// 	accent: 'blue'
+// };
 
 export class Theme extends React.Component<themeProps> {
 	componentDidMount() {
 		document.body.style.backgroundColor = `rgb(var(--${
-			this.props.shade ? this.props.shade : defaultTheme.shade
+			this.props.background
+				? this.props.background
+				: defaultTheme.background
 		}))`;
 	}
 	render() {

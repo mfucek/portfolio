@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
 :root {
 	--radius-big: 12px;
@@ -52,11 +52,22 @@ img {
 
 :root {
 	/* dodati support za dark theme !! */
-	--dark: 27, 29, 34;
-	--darker: 13, 14, 17;
+
+	/* LIGHT */
+	/* Background */
 	--light: 230, 230, 230;
-	--white: 255, 255, 255;
+	/* Text */
 	--black: 0, 0, 0;
+	/* Shade */
+	--darker: 13, 14, 17;
+
+	/* DARK */
+	/* Background */
+	--dark: 27, 29, 34;
+	/* Text */
+	--white: 255, 255, 255;
+	/* Shade */
+	--darkish: 49, 51, 56;
 
 	/* ACCENTS */
 	--accent: 24, 159, 236;
@@ -116,6 +127,9 @@ body,
 	background: rgba(0, 0, 0, 0.1);
 	color: rgb(var(--white));
 }
+.text-shade {
+	color: rgba(var(--theme-shade), 50%);
+}
 
 .bg-white {
 	background: rgb(var(--white));
@@ -132,7 +146,7 @@ body,
 /* TYPO */
 
 * {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Nunito', sans-serif;
 	color: rgb(var(--theme-text));
 }
 
@@ -202,7 +216,7 @@ h5,
 
 h6,
 .display-6 {
-	font-family: 'Open Sans';
+	font-family: 'Nunito';
 	font-style: normal;
 	font-weight: bold;
 	font-size: 12px;
@@ -211,7 +225,7 @@ h6,
 
 p,
 a {
-	font-family: 'Open Sans';
+	font-family: 'Nunito';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 16px;
@@ -224,7 +238,7 @@ a {
 }
 a.link {
 	position: relative;
-	font-family: 'Open Sans';
+	font-family: 'Nunito';
 	font-style: normal;
 	font-weight: bold;
 	font-size: 12px;
@@ -255,7 +269,7 @@ p.small {
 }
 
 .label {
-	font-family: 'Open Sans';
+	font-family: 'Nunito';
 	font-style: normal;
 	font-weight: bold;
 	font-size: 10px;
@@ -265,7 +279,7 @@ p.small {
 
 .card-content,
 .footer-text {
-	font-family: 'Open Sans';
+	font-family: 'Nunito';
 	font-style: normal;
 	font-weight: 600;
 	font-size: 12px;
