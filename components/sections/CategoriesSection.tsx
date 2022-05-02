@@ -71,7 +71,12 @@ class CategoryItem extends React.Component<CategoryItemProps> {
 	render() {
 		return (
 			<Button
-				className="simple w-100"
+				className={
+					this.props.postFilter &&
+					this.props.postFilter != this.props.href
+						? 'simple w-100 o-50'
+						: 'simple w-100'
+				}
 				onClick={() => {
 					if (this.props.postFilter != this.props.href) {
 						this.props.setPostFilter(this.props.href);
