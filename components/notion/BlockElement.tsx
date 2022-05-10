@@ -201,6 +201,7 @@ export default class BlockElement extends React.Component<BlockElementProps> {
 											}
 											frameBorder="0"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+											allowFullScreen
 											style={{
 												position: 'relative',
 												top: '0',
