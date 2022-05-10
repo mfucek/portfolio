@@ -11,7 +11,7 @@ const ArticleMain = styled.div`
 		height: 180px;
 		border-radius: var(--radius-big);
 
-		filter: drop-shadow(var(--card-shadow-default));
+		box-shadow: var(--card-shadow-default);
 
 		background-color: rgb(var(--theme-shade));
 		background-position: center;
@@ -26,11 +26,11 @@ const ArticleMain = styled.div`
 
 	&:hover .card-image {
 		transform: scale(var(--card-resize-hover));
-		filter: drop-shadow(var(--card-shadow-hover));
+		box-shadow: var(--card-shadow-hover);
 	}
 	&:active .card-image {
 		transform: scale(var(--card-resize-active));
-		filter: drop-shadow(var(--card-shadow-hover));
+		box-shadow: var(--card-shadow-hover);
 	}
 
 	& .card-text {

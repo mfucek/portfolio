@@ -23,7 +23,7 @@ const ImageContainer = styled.div<ImageContainerProps>`
 	border-radius: var(--radius-big);
 	margin-bottom: var(--spacing-3);
 	overflow: hidden;
-	filter: drop-shadow(var(--card-shadow-default));
+	/* filter: drop-shadow(var(--card-shadow-default)); */
 `;
 
 type ArticleImagesProps = {

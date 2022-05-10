@@ -33,7 +33,7 @@ const ArticleHeaderHelper = styled.div<ImageProps>`
 			background-position: center;
 			margin-bottom: -32px;
 			overflow: hidden;
-			filter: drop-shadow(var(--card-shadow-default));
+			box-shadow: var(--card-shadow-default);
 
 			&::after {
 				content: '';

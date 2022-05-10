@@ -7,7 +7,7 @@ const CardMain = styled.div`
 	display: block;
 	border-radius: var(--radius-big);
 
-	filter: drop-shadow(var(--card-shadow-default));
+	box-shadow: var(--card-shadow-default);
 
 	background-color: #00000080;
 	background-position: center;
@@ -24,11 +24,11 @@ const CardMain = styled.div`
 
 	&:hover {
 		transform: scale(var(--card-resize-hover));
-		filter: drop-shadow(var(--card-shadow-hover));
+		box-shadow: var(--card-shadow-hover);
 	}
 	&:active {
 		transform: scale(var(--card-resize-active));
-		filter: drop-shadow(var(--card-shadow-hover));
+		box-shadow: var(--card-shadow-hover);
 	}
 
 	& .card-shade {

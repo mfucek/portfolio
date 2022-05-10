@@ -14,7 +14,7 @@ const ImageContainer = styled.div`
 		position: relative;
 		border-radius: var(--radius-big);
 		margin-bottom: var(--spacing-3);
-		filter: drop-shadow(var(--card-shadow-default));
+		/* filter: drop-shadow(var(--card-shadow-default)); */
 		overflow: hidden;
 
 		.test {
