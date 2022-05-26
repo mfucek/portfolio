@@ -70,7 +70,7 @@ let getAllArticlesResponse:ArticlePage[] = [];
 
 async function getAllArticles(filterByStatus: string[]) {
 	if (Date.now() - lastCall < 1000*60) {
-		lastCall = Date.now();
+		// lastCall = Date.now();
 		return getAllArticlesResponse
 	}
 
