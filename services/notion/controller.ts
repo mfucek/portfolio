@@ -32,19 +32,19 @@ async function getDatabaseChildren<T = Page>(
 	filterByStatus?:string | null
 ) {
 	
-	console.log({
+	// console.log({
 
-		database_id: id,
+	// 	database_id: id,
 
-		...(sortProperty ? {
-			sorts: [{property: sortProperty, direction: 'ascending'}]
-		} : {}),
+	// 	...(sortProperty ? {
+	// 		sorts: [{property: sortProperty, direction: 'ascending'}]
+	// 	} : {}),
 		
-		...(filterByStatus ? {
-			filter: {property: "Status", select: {equals: filterByStatus} }
-		} : {})
+	// 	...(filterByStatus ? {
+	// 		filter: {property: "Status", select: {equals: filterByStatus} }
+	// 	} : {})
 
-	});
+	// });
 	
 
 	return (
@@ -66,13 +66,23 @@ async function getDatabaseChildren<T = Page>(
 }
 
 let lastCall = 0;
-let getAllArticlesResponse:ArticlePage[];
+let getAllArticlesResponse:ArticlePage[] = [];
 
-async function getAllArticles(filterByStatus?: string) {
-	if (Date.now() - lastCall > 1000*60) {
+async function getAllArticles(filterByStatus: string[]) {
+	if (Date.now() - lastCall < 1000*60) {
 		lastCall = Date.now();
-		getAllArticlesResponse = await getDatabaseChildren<ArticlePage>( databaseID, null, filterByStatus );
+		return getAllArticlesResponse
 	}
+
+	getAllArticlesResponse = [];
+
+	await Promise.all(
+		filterByStatus.map(f => getDatabaseChildren<ArticlePage>( databaseID, null, f))
+	).then((r) => {
+		r.forEach(a => {
+			getAllArticlesResponse.push(...a);
+		})
+	})
 	
 	return getAllArticlesResponse;
 }
@@ -83,7 +93,6 @@ async function getPageData(id:ID) {
 }
 
 async function submitContactInfo() {
-	// database_id: "326ed6d321824eacbd41cdbd0083f090",
 		const response = await notion.pages.create({
 			parent: {
 				database_id: '326ed6d321824eacbd41cdbd0083f090',

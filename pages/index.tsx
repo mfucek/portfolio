@@ -27,20 +27,13 @@ import { useRouter } from 'next/router';
 export default function Home({
 	results
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-	useEffect(() => {
-		console.log(results);
-	});
+	const [articles, setArticles] = useState<ArticlePage[]>(results);
 
-	let articles = results.filter(
-		(b) => b.properties.Status.select.name == 'Done'
-	);
-	// if (Post()) {
-	// 	articles = articles.filter((b) =>
-	// 		b.properties.Tags.multi_select
-	// 			.map((c) => c.name)
-	// 			.includes(JSON.parse(Post()))
-	// 	);
-	// }
+	useEffect(() => {
+		// articles.forEach((a) =>
+		// 	console.log(a.properties.Name.title[0]?.plain_text)
+		// );
+	}, [articles]);
 
 	return (
 		<>
@@ -60,10 +53,14 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-	const results: ArticlePage[] = await getAllArticles('Done');
+	const results: ArticlePage[] = await getAllArticles(
+		process.env.NODE_ENV === 'production'
+			? ['Done']
+			: ['Done', 'In progress']
+	);
 
 	console.log(
-		results.map((e) => e.id + ' - ' + e.properties.Status.select.name)
+		results.map((e) => e.id + ' - ' + e.properties.Status.select?.name)
 	);
 
 	return {

@@ -91,7 +91,7 @@ export default function PostSection(props: postSectionProps) {
 															bp.properties[
 																'Name'
 															].title[0]
-																.plain_text
+																?.plain_text
 														}
 														description={
 															bp.properties[
