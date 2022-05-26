@@ -29,11 +29,22 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const [articles, setArticles] = useState<ArticlePage[]>(results);
 
+	const router = useRouter();
+
 	useEffect(() => {
-		// articles.forEach((a) =>
-		// 	console.log(a.properties.Name.title[0]?.plain_text)
-		// );
-	}, [articles]);
+		let devMode =
+			router.asPath.includes('?dev') ||
+			process.env.NODE_ENV == 'development';
+		console.log('development status: ', devMode);
+
+		if (!devMode) {
+			setArticles(
+				articles.filter(
+					(a) => a.properties.Status.select?.name === 'Done'
+				)
+			);
+		}
+	}, []);
 
 	return (
 		<>
@@ -53,15 +64,10 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-	const results: ArticlePage[] = await getAllArticles(
-		process.env.NODE_ENV === 'production'
-			? ['Done']
-			: ['Done', 'In progress']
-	);
-
-	console.log(
-		results.map((e) => e.id + ' - ' + e.properties.Status.select?.name)
-	);
+	const results: ArticlePage[] = await getAllArticles([
+		'Done',
+		'In progress'
+	]);
 
 	return {
 		props: {

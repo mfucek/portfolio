@@ -81,7 +81,7 @@ export default function PostSection(props: postSectionProps) {
 						{props.card_view ? (
 							<>
 								{articles.map((bp, index) => (
-									<Col span={12} md={6} key={index}>
+									<Col span={12} md={6} key={bp.id}>
 										<>
 											<Link href={`/post/${bp.id}`}>
 												<a>
@@ -117,7 +117,7 @@ export default function PostSection(props: postSectionProps) {
 						) : (
 							<>
 								{articles.map((bp, index) => (
-									<Col span={12} key={index}>
+									<Col span={12} key={bp.id}>
 										<>
 											<Link href={`/post/${bp.id}`}>
 												<a>
