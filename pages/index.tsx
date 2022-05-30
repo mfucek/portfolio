@@ -40,10 +40,18 @@ export default function Home({
 		if (!devMode) {
 			setArticles(
 				articles.filter(
-					(a) => a.properties.Status.select?.name === 'Done'
+					(a) => a.properties.Status.select?.name === 'Done' // && parseInt(a.properties['Release Date'].date.start) <= Date.now()
 				)
 			);
 		}
+
+		setArticles(
+			articles.sort(
+				(a, b) =>
+					parseInt(b.properties['Relevant Date'].date.start) -
+					parseInt(a.properties['Relevant Date'].date.start)
+			)
+		);
 	}, []);
 
 	return (
@@ -73,6 +81,6 @@ export async function getStaticProps() {
 		props: {
 			results
 		},
-		revalidate: 60
+		revalidate: 10
 	};
 }
