@@ -37,21 +37,21 @@ export default function Home({
 			process.env.NODE_ENV == 'development';
 		console.log('development status: ', devMode);
 
+		let tmpArticles = articles;
+
 		if (!devMode) {
-			setArticles(
-				articles.filter(
-					(a) => a.properties.Status.select?.name === 'Done' // && parseInt(a.properties['Release Date'].date.start) <= Date.now()
-				)
+			tmpArticles = tmpArticles.filter(
+				(a) => a.properties.Status.select?.name === 'Done' // && parseInt(a.properties['Release Date'].date.start) <= Date.now()
 			);
 		}
 
-		setArticles(
-			articles.sort(
-				(a, b) =>
-					parseInt(b.properties['Relevant Date'].date.start) -
-					parseInt(a.properties['Relevant Date'].date.start)
-			)
+		tmpArticles = tmpArticles.sort(
+			(a, b) =>
+				parseInt(b.properties['Relevant Date'].date.start) -
+				parseInt(a.properties['Relevant Date'].date.start)
 		);
+
+		setArticles(tmpArticles);
 	}, []);
 
 	return (
