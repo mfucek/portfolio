@@ -91,7 +91,7 @@ export default class ArticleCard extends React.Component<CardProps> {
 				<div className="card-text">
 					<h4 className="text-white">{this.props.title}</h4>
 					<span className="display-6 text-accent">
-						{this.props.categories?.toString()}
+						{this.props.categories?.join(', ')}
 					</span>
 				</div>
 			</CardMain>
