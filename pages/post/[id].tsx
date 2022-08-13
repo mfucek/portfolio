@@ -186,7 +186,7 @@ export async function getStaticPaths() {
 	let paths = await getAllIds();
 	console.log(paths);
 
-	return { paths: paths, fallback: false, revalidate: 60 };
+	return { paths: paths, fallback: false };
 }
 
 export default Post;
