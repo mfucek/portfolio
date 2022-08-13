@@ -1,36 +1,18 @@
 import Link from 'next/link';
-import React from 'react';
+import { FC } from 'react';
 
-import ArticleImageFull from '../article_items/ArticleImageFull';
-import {
-	ArticleSplitItem,
-	ArticleSplitter
-} from '../article_items/ArticleSplitter';
-import ArticleTopic from '../article_items/ArticleTopic';
 import Heading from '../article_items/Heading';
 import Paragraph from '../article_items/Paragraph';
 import Subheading from '../article_items/Subheading';
-import ArticleCard from '../cards/ArticleCard';
-import ArticleCardList from '../cards/ArticleCardList';
 
 import {
-	ArticlePage,
-	BasePage,
 	Block,
-	BulletedListBlock,
-	ChildDatabaseBlock,
 	HeadingOneBlock,
 	HeadingThreeBlock,
 	HeadingTwoBlock,
-	ID,
-	ImageBlock,
-	ImagePage,
-	LinkToPageBlock,
-	Page,
-	ParagraphBlock,
-	TodoBlock,
-	TopicPage
+	ParagraphBlock
 } from '../notion/notion';
+import Subsubheading from './Subsubheading';
 
 export const NotionHeading = (block: HeadingOneBlock) => {
 	return (
@@ -52,37 +34,51 @@ export const NotionSubheading = (block: HeadingTwoBlock) => {
 	);
 };
 
-export const NotionParagraph = (block: ParagraphBlock) => {
+export const NotionSubsubheading = (block: HeadingThreeBlock) => {
+	return (
+		<>
+			{block.heading_3.text.map((e, id) => {
+				return <Subsubheading text={e.plain_text} key={id} />;
+			})}
+		</>
+	);
+};
+
+export const NotionParagraph: FC<{ block: ParagraphBlock }> = ({
+	block,
+	children
+}) => {
 	return (
 		<>
 			{block.paragraph.text.length != 0 ? (
-				// <Paragraph text={block.paragraph.text[0]?.plain_text} />
-				<Paragraph text={''}>
-					{/* {block.paragraph.text[0]?.plain_text} */}
-					{block.paragraph.text.map((e) => {
-						if (e.annotations.bold) {
-							return <b> {e.plain_text} </b>;
-						}
-						if (e.annotations.italic) {
-							return <i> {e.plain_text} </i>;
-						}
-						if (e.annotations.code) {
-							return <code> {e.plain_text} </code>;
-						}
-						if (e.href) {
-							return (
-								<Link href={e.href} passHref>
-									<a href="">
-										<span className="text-accent">
-											{e.plain_text}
-										</span>
-									</a>
-								</Link>
-							);
-						}
-						return e.plain_text;
-					})}
-				</Paragraph>
+				<div className={children ? 'pb-2' : ''}>
+					<Paragraph text={''} hasChildren={children ? true : false}>
+						{block.paragraph.text.map((e) => {
+							if (e.annotations.bold) {
+								return <b> {e.plain_text} </b>;
+							}
+							if (e.annotations.italic) {
+								return <i> {e.plain_text} </i>;
+							}
+							if (e.annotations.code) {
+								return <code> {e.plain_text} </code>;
+							}
+							if (e.href) {
+								return (
+									<Link href={e.href} passHref>
+										<a href="">
+											<span className="text-accent">
+												{e.plain_text}
+											</span>
+										</a>
+									</Link>
+								);
+							}
+							return e.plain_text;
+						})}
+					</Paragraph>
+					{children && <div className="pl-4">{children}</div>}
+				</div>
 			) : (
 				<></>
 			)}

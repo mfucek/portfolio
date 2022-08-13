@@ -4,7 +4,8 @@ import { BlockReference, DataBlocks } from '../../@types/article';
 import {
 	NotionHeading,
 	NotionParagraph,
-	NotionSubheading
+	NotionSubheading,
+	NotionSubsubheading
 } from '../article_items/NotionMapping';
 
 import ArticleImageFull from '../article_items/ArticleImageFull';
@@ -13,34 +14,24 @@ import {
 	ArticleSplitter
 } from '../article_items/ArticleSplitter';
 import ArticleTopic from '../article_items/ArticleTopic';
-import Heading from '../article_items/Heading';
-import Paragraph from '../article_items/Paragraph';
-import Subheading from '../article_items/Subheading';
-import ArticleCard from '../cards/ArticleCard';
 import ArticleCardList from '../cards/ArticleCardList';
 
+import ArticleImageMultiple from '../article_items/ArticleImage';
 import Col from '../grid/Col';
+import Container from '../grid/Container';
 import Row from '../grid/Row';
 import {
 	ArticlePage,
-	BasePage,
 	BulletedListBlock,
 	ChildDatabaseBlock,
-	HeadingOneBlock,
-	HeadingThreeBlock,
-	HeadingTwoBlock,
 	ID,
 	ImageBlock,
 	ImagePage,
 	LinkToPageBlock,
-	Page,
-	ParagraphBlock,
 	TodoBlock,
 	TopicPage,
 	VideoBlock
 } from './notion';
-import ArticleImageMultiple from '../article_items/ArticleImage';
-import Container from '../grid/Container';
 
 type BlockElementProps = {
 	dataBlocks: DataBlocks;
@@ -72,18 +63,29 @@ export default class BlockElement extends React.Component<BlockElementProps> {
 			}
 
 			if (block.block.type === 'heading_3') {
-				let b: HeadingThreeBlock = block.block;
-				return (
-					<>
-						{b.heading_3.text.map((e, id) => {
-							return <h3 key={id}>{e.plain_text}</h3>;
-						})}
-					</>
-				);
+				return <NotionSubsubheading {...block.block} />;
+				// let b: HeadingThreeBlock = block.block;
+				// return (
+				// 	<>
+				// 		{b.heading_3.text.map((e, id) => {
+				// 			return <h3 key={id}>{e.plain_text}</h3>;
+				// 		})}
+				// 	</>
+				// );
 			}
 
 			if (block.block.type === 'paragraph') {
-				return <NotionParagraph {...block.block} />;
+				return (
+					<>
+						<NotionParagraph block={block.block}>
+							{blockChildren.length != 0 ? (
+								<ul>{blockChildren}</ul>
+							) : (
+								<></>
+							)}
+						</NotionParagraph>
+					</>
+				);
 			}
 
 			if (block.block.type === 'bulleted_list_item') {
@@ -91,7 +93,8 @@ export default class BlockElement extends React.Component<BlockElementProps> {
 				return (
 					<>
 						<Container>
-							<Row justify>
+							{/* <Row justify className="mb-4"> */}
+							<Row justify className="mb-2">
 								<Col span={12} sm={8}>
 									<li>
 										{b.bulleted_list_item.text.map((e) => {

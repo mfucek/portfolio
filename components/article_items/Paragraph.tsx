@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Container from '../grid/Container';
 import Col from '../grid/Col';
+import Container from '../grid/Container';
 import Row from '../grid/Row';
 
 type ParagraphProps = {
@@ -9,13 +9,16 @@ type ParagraphProps = {
 	text: String;
 	narrow?: Boolean;
 	justify?: String;
+	hasChildren?: boolean;
 };
 
 class Paragraph extends React.Component<ParagraphProps> {
 	render() {
 		return (
 			<Container>
-				<Row justify className="mb-4">
+				<Row
+					justify
+					className={this.props.hasChildren ? 'mb-2' : 'mb-4'}>
 					<Col
 						span={12}
 						sm={this.props.narrow ? 6 : 8}
