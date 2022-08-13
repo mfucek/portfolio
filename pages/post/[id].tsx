@@ -1,15 +1,16 @@
-import Link from 'next/link';
-
 import Footer from '../../components/footer/Footer';
 import Container from '../../components/grid/Container';
 import Navbar from '../../components/nav/Navbar';
 
-import { Theme } from '../../components/theme/theme';
 import ArticleHeader from '../../components/article_items/ArticleHeader';
 import Wrapper from '../../components/grid/Wrapper';
+import { Theme } from '../../components/theme/theme';
 
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { DataBlocks } from '../../@types/article';
+import { ArticlePage, ID } from '../../components/notion/notion';
 import NotionPage from '../../components/notion/NotionPage';
 import {
 	getAllIds,
@@ -17,9 +18,6 @@ import {
 	getDatabaseChildren,
 	getPageData
 } from '../../services/notion/controller';
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { ArticlePage, ID } from '../../components/notion/notion';
-import { BlockReference, DataBlocks } from '../../@types/article';
 
 // const Post = ({ dataBlocks, parentBlocks, pageData, pageReferences }) => {
 const Post = ({
@@ -188,7 +186,7 @@ export async function getStaticPaths() {
 	let paths = await getAllIds();
 	console.log(paths);
 
-	return { paths: paths, fallback: false };
+	return { paths: paths, fallback: false, revalidate: 60 };
 }
 
 export default Post;
